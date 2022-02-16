@@ -22,7 +22,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Generate 404.html file
-        run: cp dist/gestion-projet-transports/index.html dist/gestion-projet-transports/404.html
+        run: cp dist/gestion-transports-front/index.html dist/gestion-transports-front/404.html
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
