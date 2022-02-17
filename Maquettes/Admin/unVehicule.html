@@ -54,35 +54,50 @@
                     <img src="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg" alt="voiture">
                 </div>
                 <div>
-                    <label>Immatriculation : </label>
-                    <input type="text" value="Immatriculation"><br>
+                    <div class="form-floating">
+                        <input type="text" class="form-control w-25" id="floatingImma" >
+                        <label for="floatingImma" value="Immatriculation">Immatriculation</label><br>
+                    </div>
 
-                    <label>Marque : </label>
-                    <input type="text" value="Marque"><br>
+                    <div class="form-floating">
+                        <input type="text" class="form-control w-25" id="floatingMarque" >
+                        <label for="floatingMarque" value="Marque">Marque</label><br>
+                    </div>
 
-                    <label>Modele : </label>
-                    <input type="text" value="Modele"><br>
+                    <div class="form-floating">
+                        <input type="text" class="form-control w-25" id="floatingModele" >
+                        <label for="floatingImma" value="Modèle">Modèle</label><br>
+                    </div>
 
-                    <label>Catégorie :</label>
-                    <select name="voiture" id="voiture">
-                        <option value="">--Please choose an option--</option>
-                        <option value="suv">SUV</option>
-                        <option value="berline">Berline</option>
-                        <option value="">Micro-urbaines</option>
-                        <option value="">Mini-urbaine</option>
-                    </select><br>
+                    <div class="form-floating">
+                        <select class="form-select w-25" id="floatingCat" aria-label="FloatingCatSelect">
+                            <option selected>Choisir la catégorie</option>
+                            <option value="suv">SUV</option>
+                            <option value="berline">Berline</option>
+                            <option value="microUrbaine">Micro Urbaine</option>
+                          </select>
+                          <label for="floatingCat">Catégorie</label><br>
+                    </div>
 
-                    <label>Nombre de places : </label>
-                    <input type="text" value="4"><br>
+                    <div class="form-floating">
+                        <input type="number" class="form-control w-25" id="floatingPlace" >
+                        <label for="floatingPlace">Nombre de Place</label><br>
+                    </div>
 
-                    <label>Photo : </label>
-                    <input type="text" value="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg"><br>
-                    <label>Statut :</label>
-                    <select name="voiture" id="voiture">
-                        <option value="enService">En service</option>
-                        <option value="enReparation">En réparation</option>
-                        <option value="horsService">Hors Service</option>
-                    </select>
+                    <div class="form-floating">
+                        <input type="text" class="form-control w-25" id="floatingPhoto" value="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg" >
+                        <label for="floatingPhoto">Photo</label><br>
+                    </div>
+                    
+                    <div class="form-floating">
+                        <select class="form-select w-25" id="floatingStatut" aria-label="FloatingStatutSelect">
+                            <option selected>Choisir le statut</option>
+                            <option value="enService">En service</option>
+                            <option value="enRepa">En réparation</option>
+                            <option value="horsService">Hors service</option>
+                          </select>
+                          <label for="floatingStatut">Statut</label><br>
+                    </div>
                 </div>
                 <div>
                     <h3>Prochaine reservations</h3>
