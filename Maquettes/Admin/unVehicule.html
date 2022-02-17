@@ -28,7 +28,7 @@
         <nav>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container">
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="vehicules.html" class="navbar-brand d-flex align-items-center">
                     Vehicules
                 </a>
                 </div>
@@ -77,29 +77,54 @@
 
                     <label>Photo : </label>
                     <input type="text" value="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg"><br>
-                    <p>Statut : En Service</p>
-                    <div class ="d-flex justify-content-end">
-                        <button>Mettre en réparation</button><br>
-                        <button>Mettre en service</button><br>
-                        <button>Hors service</button>
-                    </div>
+                    <label>Statut :</label>
+                    <select name="voiture" id="voiture">
+                        <option value="enService">En service</option>
+                        <option value="enReparation">En réparation</option>
+                        <option value="horsService">Hors Service</option>
+                    </select>
                 </div>
                 <div>
                     <h3>Prochaine reservations</h3>
-                    <table>
+                    <table class="table">
                         <thead>
-                            <tr></tr>
+                            <tr>
+                                <th scope="col">Date / heure de départ</th>
+                                <th scope="col">Date / heure d'arrivé</th>
+                                <th scope="col">Responsable</th>
+                            </tr>
                         </thead>
                         <tbody>
-
+                            <tr>
+                                <td>17/02/2022 10:00:00</td>
+                                <td>17/02/2022 12:00:00</td>
+                                <td>Dupond</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div>
                     <h3>Historique des reservation</h3>
-                    <table>
-                        
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date / heure de départ</th>
+                                <th scope="col">Date / heure d'arrivé</th>
+                                <th scope="col">Responsable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>17/02/2022 10:00:00</td>
+                                <td>17/02/2022 12:00:00</td>
+                                <td>Dupond</td>
+                            </tr>
+                        </tbody>
                     </table>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-success">Modifier</button>
+                    <a class="btn btn-primary" href="vehicules.html" role="btnRetour">Retour</a>
                 </div>
             </div>
         </div>
