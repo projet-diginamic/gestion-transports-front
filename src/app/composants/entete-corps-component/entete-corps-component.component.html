@@ -1,6 +1,6 @@
 <aside>
     <div class="container">
-        <app-titre-page-component></app-titre-page-component>
+        <app-titre-page-component [titrePage]="titre" (action)="action($event)"></app-titre-page-component>
         <hr>
         <app-sous-menu-page-component></app-sous-menu-page-component>
     </div>

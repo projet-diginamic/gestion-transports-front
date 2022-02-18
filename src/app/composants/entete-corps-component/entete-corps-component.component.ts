@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnteteCorpsComponentComponent implements OnInit {
 
+  titre="Vos réservations de covoiturage";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  action(texte:string){
+    alert(texte);
   }
 
 }
