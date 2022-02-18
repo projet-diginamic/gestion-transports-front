@@ -25,6 +25,7 @@ import { TitrePageComponentComponent } from './composants/titre-page-component/t
     NouveauVehiculeComponent,
     FiltreVehiculeComponent,
     NavigationGeneraleComponentComponent,
+    TitrePageComponentComponent,
     CorpsPageComponentComponent,
     EnteteCorpsComponentComponent,
     SousMenuPageComponentComponent,
