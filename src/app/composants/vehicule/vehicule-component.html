@@ -1,0 +1,10 @@
+<div class="col" **ngIf="colVehicule">
+    <div class="card shadow-sm">
+        <img src="{{col.photoURL}}" alt="voiture">
+        <div class="card-body">
+            <p class="card-text text-center"><a href="">{{colVehicule.immatriculation.ToUpperCase()}}</a></p>
+            <p class="card-text text-center">{{colVehicule.marque}} - {{colVehicule.modele}}</p>
+            <p class="card-text text-center">{{colVehicule.categorie}}</p>
+        </div>
+    </div>
+</div>
