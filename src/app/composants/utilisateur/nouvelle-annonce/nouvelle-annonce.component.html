@@ -1,0 +1,75 @@
+<aside>
+    <div class="container">
+        <app-titre-page-component [titrePage]="titrePage" [libelleBtn]="libelleBtn" [lien]="lien" [classBtn]="classBtn"></app-titre-page-component>
+        <hr>
+        <div class="row mb-3">
+            <div class="col-12">
+                <button class="btn btn-outline-danger me-2">Annuler</button>
+                <button class="btn btn-outline-success me-2">Valider ma réservation</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<form class="container">
+    <div class="row">
+
+        <div class="col-4">
+            <h4>Date et horaire</h4>
+
+            <div class="form-floating mb-2">
+                <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
+                <label for="floatingInput">Date /heure*</label>
+            </div>
+
+        </div>
+
+        <div class="col-4">
+
+            <h4>Itinéraire</h4>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Adresse de départ*</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Adresse de destination*</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <div class="alert alert-info" role="alert">
+                    <p class="text-center mt-0 mb-0">Durée du trajet <strong>2 h 31 mm</strong></p>
+                    <p class="text-center mt-0 mb-0">Distance <strong>250 km</strong></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-4">
+            <h4>Véhicule</h4>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Immatriculation*</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Marque*</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Modèle*</label>
+            </div>
+
+
+            <div class="form-floating mb-2">
+                <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <label for="floatingInput">Nombre de places disponibles*</label>
+            </div>
+        </div>
+    </div>
+</form>
