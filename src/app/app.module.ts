@@ -15,6 +15,9 @@ import { SousMenuPageComponentComponent } from './composants/sous-menu-page-comp
 import { DataTablesModule } from "angular-datatables";
 import { NavigationGeneraleComponentComponent } from './composants/navigation-generale-component/navigation-generale-component.component';
 import { TitrePageComponentComponent } from './composants/titre-page-component/titre-page-component.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CategorieVehiculeComponent } from './composants/categorie-vehicule/categorie-vehicule.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,12 +33,15 @@ import { TitrePageComponentComponent } from './composants/titre-page-component/t
     EnteteCorpsComponentComponent,
     SousMenuPageComponentComponent,
     ContenuPageComponentComponent,
-    ContenuPageComponentComponent
+    ContenuPageComponentComponent,
+    CategorieVehiculeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

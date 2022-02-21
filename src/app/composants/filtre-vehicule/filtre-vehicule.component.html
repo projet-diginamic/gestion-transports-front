@@ -1,1 +1,22 @@
-<p>filtre-vehicule works!</p>
+<div class="ms-5">
+    <button (click)="rafraichir()" type="button" class="btn btn-secondary">Rafraichir</button>
+</div>
+<section>
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h2 class="fw-light">Vehicule</h2>
+        </div>
+    </div>
+    <div class="ms-5">
+        <p>Filtre</p>
+        <div class="form-floating">
+            <input type="text" class="form-control w-25" id="floatingImma" name="filtreImma" >
+            <label for="floatingImma">Immatriculation</label><br>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control w-25" id="floatingMarque" name="filtreMarque">
+            <label for="floatingMarque">Marque</label><br>
+        </div>   
+        <button (click)="filtrerListe()" type="button" class="btn btn-secondary">Rechercher</button>
+    </div>
+</section>

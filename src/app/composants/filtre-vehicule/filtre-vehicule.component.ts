@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VehiculeService } from 'src/app/services/vehiculeService';
 
 @Component({
   selector: 'app-filtre-vehicule',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltreVehiculeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vehiculeServ : VehiculeService) { }
 
   ngOnInit(): void {
+
   }
 
+  rafraichir(){
+    this.vehiculeServ.rafraichirListeVehicules();
+  }
+
+  // filtrerParImma(immavehicule){
+  //   this.vehiculeServ.filtrerVehiculeParImma(immavehicule)
+  // }
+  // filterParMarque(marqueVehicule){
+  //   this.vehiculeServ.filtrerVehiculeParMarque(marqueVehicule);
+  // }
+
+  filtrerListe(){
+    
+    
+  }
 }

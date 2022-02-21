@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Categorie } from 'src/app/models/vehicule';
+import { VehiculeService } from 'src/app/services/vehiculeService';
 
 @Component({
   selector: 'app-nouveau-vehicule',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NouveauVehiculeComponent implements OnInit {
 
-  constructor() { }
+  categorie!: Observable<Categorie[]>;
+
+  constructor(private vehiculeServ: VehiculeService) { }
 
   ngOnInit(): void {
+    this.categorie = this.vehiculeServ.listerCategorie();
   }
 
 }
