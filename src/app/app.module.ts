@@ -30,6 +30,7 @@ import { ResaVehiculeEncoursComponent } from './composants/utilisateur/tables/re
 import { ResaVehiculeHistoriqueComponent } from './composants/utilisateur/tables/resa-vehicule-historique/resa-vehicule-historique.component';
 import { AnnoncesEncoursComponent } from './composants/utilisateur/tables/annonces-encours/annonces-encours.component';
 import { AnnoncesHistoriqueComponent } from './composants/utilisateur/tables/annonces-historique/annonces-historique.component';
+import { EnteteAdminComponent } from './composants/template/entete-admin/entete-admin.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AnnoncesHistoriqueComponent } from './composants/utilisateur/tables/ann
     ResaVehiculeEncoursComponent,
     ResaVehiculeHistoriqueComponent,
     AnnoncesEncoursComponent,
-    AnnoncesHistoriqueComponent
+    AnnoncesHistoriqueComponent,
+    EnteteAdminComponent
   ],
   imports: [
     BrowserModule,
