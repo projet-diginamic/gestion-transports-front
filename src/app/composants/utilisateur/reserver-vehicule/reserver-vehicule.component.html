@@ -1,0 +1,77 @@
+<aside>
+    <div class="container">
+        <app-titre-page-component [titrePage]="titrePage" [libelleBtn]="libelleBtn" [lien]="lien" [classBtn]="classBtn"></app-titre-page-component>
+        <hr>
+        <div class="row mb-3">
+            <div class="col-12">
+                <button class="btn btn-outline-danger me-2">Annuler</button>
+                <button class="btn btn-outline-success me-2">Valider ma réservation</button>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form>
+
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Avec chauffeur</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
+                    <label for="floatingInput">Date /heure*</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
+                    <label for="floatingInput">Date /heure*</label>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="col-8 ps-5 pe-5">
+            <div class="card">
+                <div class="card-header">
+                    <div class="dropdown d-inline">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          Filtre
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li class="ps-2 pe-2 mb-2">
+                                <select class="form-select">
+                                    <option>Marque</option>
+                                </select>
+                            </li>
+                            <li class="ps-2 pe-2 mb-2">
+                                <select class="form-select">
+                                    <option>Catégorie</option>
+                                </select>
+                            </li>
+                            <li class="ps-2 pe-2 mb-2">
+                                <select class="form-select">
+                                    <option>Modèle</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group float-end" role="group">
+                        <button type="button" class="btn btn-secondary"><</button>
+                        <button type="button" class="btn btn-secondary">></button>
+                    </div>
+                </div>
+                <img src="https://img.gocar.be/v7/_cloud_wordpress_/2018/05/rs8audi.jpg" class="card-img-top img-fluid" alt="visuel du véhicule">
+                <div class="card-body">
+                    <h5 class="text-center">12-AD-AZA</h5>
+                    <p class="card-text text-center">Audi - RS8</p>
+                    <button class="btn btn-outline-success w-100">Réserver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

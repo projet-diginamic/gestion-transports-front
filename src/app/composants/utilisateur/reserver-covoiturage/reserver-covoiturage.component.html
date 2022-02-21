@@ -1,0 +1,29 @@
+
+<aside>
+    <div class="container">
+        <app-titre-page-component [titrePage]="titrePage" [libelleBtn]="libelleBtn" [lien]="lien" [classBtn]="classBtn"></app-titre-page-component>
+        <hr>
+        <div class="row mb-3">
+            <div class="col-8 d-flex align-items-center">
+                <div class="form-floating flex-grow-1 me-1">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Saisir ici l'adresse de départ" autofocus>
+                    <label for="floatingInput">Adresse de départ</label>
+                </div>
+                <div class="form-floating flex-grow-1 me-1">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Saisir ici l'adresse d'arrivée">
+                    <label for="floatingInput">Adresse de destination</label>
+                </div>
+                <div class="form-floating flex-grow-1">
+                    <input type="datetime" class="form-control" id="floatingInput" placeholder="Saisir ici la date de départ">
+                    <label for="floatingInput">Date de départ</label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="alert alert-info h-100 d-flex flex-column justify-content-center" role="alert">
+                    <p class="text-center mt-0 mb-0">Durée du trajet <strong>2 h 31 mm</strong></p>
+                    <p class="text-center mt-0 mb-0">Distance <strong>250 km</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
