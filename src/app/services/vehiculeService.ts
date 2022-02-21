@@ -28,13 +28,13 @@ export class VehiculeService {
     //Filtre la liste des vehicules en fonction de l'immatriculation
     filtrerVehiculeParImma(immatriculation : string) : Observable<Vehicule[]>{
         const urlFiltreImma = `http://localhost:3000/vehicules?immatriculation=${immatriculation}`;
-        return this.http.get<Vehicule[]>(urlFiltreImma) ;
+        return this.http.get<Vehicule[]>(urlFiltreImma);
     }
 
     //Filtre la liste des vehicules en fonction de la marque
     filtrerVehiculeParMarque(marque: string) : Observable<Vehicule[]>{
         const urlFiltreMarque = `http://localhost:3000/vehicules?marque=${marque}`;
-        return this.http.get<Vehicule[]>(urlFiltreMarque) ;
+        return this.http.get<Vehicule[]>(urlFiltreMarque);
     }
 
     //Rafraichis la liste des vehicules
