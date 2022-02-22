@@ -2,9 +2,11 @@
     <div class="card shadow-sm">
         <img  src="{{colVehicule.photo}}" alt="voiture">
         <div class="card-body">
-            <p class="card-text text-center"><a href="">{{colVehicule.immatriculation}}</a></p>
+            <p class="card-text" hidden="false" id="{{colVehicule.idVehicule}}"></p>
+            <p class="card-text text-center">{{colVehicule.immatriculation}}</p>
             <p class="card-text text-center">{{colVehicule.marque}} - {{colVehicule.modele}}</p>
-            <p class="card-text text-center">{{colVehicule.categorie}}</p>
+            <p class="card-text" hidden="false" id="{{colVehicule.idCategorie}}"></p>
+            <button type="button" class="btn btn-secondary">Details</button>
         </div>
     </div>
 </div>

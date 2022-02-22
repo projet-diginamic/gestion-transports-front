@@ -11,7 +11,7 @@ import { FiltreVehiculeComponent } from './composants/administrateur/filtre-vehi
 import { DataTablesModule } from "angular-datatables";
 import { HttpClientModule } from '@angular/common/http';
 import { CategorieVehiculeComponent } from './composants/administrateur/categorie-vehicule/categorie-vehicule.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationGeneraleComponent } from './composants/template/navigation-generale/navigation-generale.component';
 import { CorpsPageComponent } from './composants/template/corps-page/corps-page.component';
 import { EnteteCorpsComponent } from './composants/template/entete-corps/entete-corps.component';
@@ -73,7 +73,8 @@ import { EnteteAdminComponent } from './composants/template/entete-admin/entete-
     AppRoutingModule,
     DataTablesModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

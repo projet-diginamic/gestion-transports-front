@@ -13,7 +13,6 @@ export class CategorieVehiculeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
 }

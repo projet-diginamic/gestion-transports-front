@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Categorie } from 'src/app/models/vehicule';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Categorie, CreeVehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehiculeService';
+
 
 @Component({
   selector: 'app-nouveau-vehicule',
@@ -10,12 +12,34 @@ import { VehiculeService } from 'src/app/services/vehiculeService';
 })
 export class NouveauVehiculeComponent implements OnInit {
 
-  categorie!: Observable<Categorie[]>;
+  categorie!: Categorie[];
+  nouveauVehicule: Partial<CreeVehicule> = {}
 
-  constructor(private vehiculeServ: VehiculeService) { }
-
-  ngOnInit(): void {
-    this.categorie = this.vehiculeServ.listerCategorie();
+  msgErreur?: string;
+  msgOk?: string;
+  
+  constructor(private vehiculeServ: VehiculeService, private router: Router) { 
   }
 
+  ngOnInit(): void {
+
+    this.vehiculeServ.listerCategorie()
+    .subscribe(data => this.categorie = data);  
+  }
+
+  valider(colForm: NgForm) {
+    this.msgOk = undefined;
+    this.msgErreur = undefined;
+
+    this.vehiculeServ.creerVehicule(this.nouveauVehicule)
+    .subscribe({
+      next: () => {
+        this.msgOk = "La voiture à bien été crée";
+        colForm.reset();
+        this.nouveauVehicule = {}
+        this.router.navigateByUrl('/vehicules');
+      },
+      error: () => this.msgErreur = "Un problème est survenu"
+    });
+  }
 }

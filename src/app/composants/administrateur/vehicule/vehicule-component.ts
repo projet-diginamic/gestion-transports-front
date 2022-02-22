@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Vehicule } from "../../../models/vehicule";
 
 @Component({
@@ -6,6 +7,7 @@ import { Vehicule } from "../../../models/vehicule";
     templateUrl : './vehicule-component.html',
     styleUrls: ['./vehicule-component.scss']
 })
+
 
 export class VehiculeComponent implements OnInit{
 
@@ -17,4 +19,6 @@ export class VehiculeComponent implements OnInit{
     ngOnInit(): void {
         
     }
+
+
 }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListeVehiculeComponent } from './composants/administrateur/liste-vehicule/liste-vehicule.component';
 import { EnteteAdminComponent } from './composants/template/entete-admin/entete-admin.component';
 import { AnnoncesComponent } from './composants/utilisateur/annonces/annonces.component';
 import { NouvelleAnnonceComponent } from './composants/utilisateur/nouvelle-annonce/nouvelle-annonce.component';

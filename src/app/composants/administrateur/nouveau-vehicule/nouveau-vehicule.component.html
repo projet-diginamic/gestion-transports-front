@@ -3,54 +3,82 @@
 </div>
 
 <!-- Formulaire ajout nouvelle voiture en pop up -->
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title">Créer nouveau véhicule</h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
             </div>
             <div class="modal-body">
-                <form action="">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingImma" >
-                    <label for="floatingImma">Immatriculation</label><br>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingMarque">
-                    <label for="floatingMarque">Marque</label><br>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingModele" >
-                    <label for="floatingModele">Modèle</label><br>
-                </div>
-                <div class="form-floating">
-                    <select class="form-select" id="floatingCat" aria-label="FloatingCatselect">
-                        <option selected>Choisir la catégorie</option>
-                        <ng-component *ngIf="categorie | async as tabCategorie; else colAbsent">
-                            <app-categorie-vehicule *ngFor="let tableauDeCategorie of tabCategorie" [colCategorie]="tableauDeCategorie"></app-categorie-vehicule>
-                        </ng-component>
-                        <ng-template #colAbsent>
-                            <p>Chargement....</p>
-                        </ng-template>
-                    </select>
-                        <label for="floatingCat">Catégorie</label><br>
-                </div>
-                <div class="form-floating">
-                    <input type="number" class="form-control" id="floatingPlaces" >
-                    <label for="floatingPlaces">Nombre de Places</label><br>
-                </div>  
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingPhoto" >
-                    <label for="floatingPhoto">URL Photo</label><br>
-                </div>
+                <form #colForm="ngForm">
+
+                    <!-- Input immatriculation -->
+                    <div class="form-floating">
+                        <input name="immaVehicule" [(ngModel)]="nouveauVehicule.immatriculation" type="text" class="form-control" id="floatingImma" required>
+                        <p *ngIf="colForm.controls['immaVehicule'].dirty && colForm.controls['immaVehicule'].invalid">
+                            L'immatriculation du véhicule est requis.
+                        </p>
+                        <label for="floatingImma">Immatriculation</label><br>
+                    </div>
+
+                    <!-- Input marque -->
+                    <div class="form-floating">
+                        <input name="marqueVehicule" [(ngModel)]="nouveauVehicule.marque" type="text" class="form-control" id="floatingMarque" required>
+                        <p *ngIf="colForm.controls['marqueVehicule'].dirty && colForm.controls['marqueVehicule'].invalid">
+                            La marque du véhicule est requis.
+                        </p>
+                        <label for="floatingMarque">Marque</label><br>
+                    </div>
+
+                    <!-- Input modele -->
+                    <div class="form-floating">
+                        <input name="modeleVehicule" [(ngModel)]="nouveauVehicule.modele" type="text" class="form-control" id="floatingModele" required>
+                        <p *ngIf="colForm.controls['modeleVehicule'].dirty && colForm.controls['modeleVehicule'].invalid">
+                            Le modèle du véhicule est requis.
+                        </p>
+                        <label for="floatingModele">Modèle</label><br>
+                    </div>
+
+                    <!-- Input select categorie -->
+                    <div class="form-floating">
+                        <select name="categorieVehicule" [(ngModel)]="nouveauVehicule.idCategorie" class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            <option selected>Choisir la catégorie</option>
+                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.idCategorie">{{tableauDeCategorie.libelleCategorie}}</option>
+                        </select>
+                        <p *ngIf="colForm.controls['categorieVehicule'].dirty && colForm.controls['categorieVehicule'].invalid">
+                            La catégorie du véhicule est requis.
+                        </p>
+                            <label for="floatingCat">Catégorie</label><br>
+                    </div>
+
+                    <!-- Input Nombre de places -->
+                    <div class="form-floating">
+                        <input name="nbPlace" [(ngModel)]="nouveauVehicule.nbPlace" type="number" class="form-control" id="floatingPlaces" required >
+                        <p *ngIf="colForm.controls['nbPlace'].dirty && colForm.controls['nbPlace'].invalid">
+                            Le nombre de places du véhicule est requis.
+                        </p>
+                        <label for="floatingPlaces">Nombre de Places</label><br>
+                    </div>  
+
+                    <!-- Input URL Photo -->
+                    <div class="form-floating">
+                        <input name="photoVehicule" [(ngModel)]="nouveauVehicule.photo"  type="text" class="form-control" id="floatingPhoto" required>
+                        <p *ngIf="colForm.controls['photoVehicule'].dirty && colForm.controls['photoVehicule'].invalid">
+                            L'url de la photo du véhicule est requis.
+                        </p>
+                        <label for="floatingPhoto">URL Photo</label><br>
+                    </div>
+                
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-success">Valider</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-success" (click)="valider(colForm)" [disabled]="colForm.invalid">Valider</button>
+                <p *ngIf="msgOk">{{msgOk}}</p>
+                <p *ngIf="msgErreur">{{msgErreur}}</p>
             </div>
         </div>
     </div>

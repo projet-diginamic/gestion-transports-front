@@ -51,6 +51,12 @@ export class VehiculeService {
         return this.http.get<Categorie[]>(urlCategorie);
     }
 
+    //Recherche la catégorie du vehicule en fonction de l'idCategorie dans l'interface Vehicule
+    rechercherCategorieVehicule(id : number) : Observable<Categorie>{
+        const urlCatVehicule = `http://localhost:3000/categorie?idCategorie=${id}`;
+        return this.http.get<Categorie>(urlCatVehicule);
+    }
+
     //Ajouter un nouveau Vehicule
     creerVehicule(vehicule: Partial<CreeVehicule>){
         return this.http.post<Vehicule>(url,vehicule)

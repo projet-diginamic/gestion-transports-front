@@ -1,22 +1,23 @@
 export interface Vehicule {
+    idVehicule : number;
+    idCategorie : number;
     immatriculation : string;
     marque : string;
     modele : string;
-    categorie : string;
     photo : string;
-}
-
-export interface Categorie{
-    idCategorie : number;
-    libelleCategorie: string;
 }
 
 export interface CreeVehicule{
     immatriculation : string;
     marque : string;
     modele : string;
-    categorie : Categorie;
+    idCategorie : number;
     nbPlace : number;
     photo : string;
 
+}
+
+export interface Categorie{
+    idCategorie : number;
+    libelleCategorie: string;
 }
