@@ -1,0 +1,804 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>gestion-transports-front documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">gestion-transports-front documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  NouveauVehiculeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-nouveau-vehicule</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./nouveau-vehicule.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./nouveau-vehicule.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#categorie" >categorie</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#msgErreur" >msgErreur</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#msgOk" >msgOk</a>
+                            </li>
+                            <li>
+                                <a href="#nouveauVehicule" >nouveauVehicule</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#annuler" >annuler</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#valider" >valider</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(vehiculeServ: <a href="../injectables/VehiculeService.html" target="_self">VehiculeService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>vehiculeServ</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VehiculeService.html" target="_self" >VehiculeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="annuler"></a>
+                    <span class="name">
+                        <span ><b>annuler</b></span>
+                        <a href="#annuler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>annuler(colForm: <a href="https://angular.io/api/forms/NgForm" target="_blank">NgForm</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>colForm</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgForm" target="_blank" >NgForm</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="valider"></a>
+                    <span class="name">
+                        <span ><b>valider</b></span>
+                        <a href="#valider"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>valider(colForm: <a href="https://angular.io/api/forms/NgForm" target="_blank">NgForm</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>colForm</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgForm" target="_blank" >NgForm</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="categorie"></a>
+                    <span class="name">
+                        <span ><b>categorie</b></span>
+                        <a href="#categorie"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Categorie.html" target="_self" >Categorie[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="msgErreur"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>msgErreur</b></span>
+                        <a href="#msgErreur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="msgOk"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>msgOk</b></span>
+                        <a href="#msgOk"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nouveauVehicule"></a>
+                    <span class="name">
+                        <span ><b>nouveauVehicule</b></span>
+                        <a href="#nouveauVehicule"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Partial&lt;CreeVehicule&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/composants/administrateur/nouveau-vehicule/nouveau-vehicule.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { NgForm } from &#x27;@angular/forms&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Categorie, CreeVehicule } from &#x27;src/app/models/vehicule&#x27;;
+import { VehiculeService } from &#x27;src/app/services/vehiculeService&#x27;;
+
+
+@Component({
+  selector: &#x27;app-nouveau-vehicule&#x27;,
+  templateUrl: &#x27;./nouveau-vehicule.component.html&#x27;,
+  styleUrls: [&#x27;./nouveau-vehicule.component.scss&#x27;]
+})
+export class NouveauVehiculeComponent implements OnInit {
+
+  categorie!: Categorie[];
+  nouveauVehicule: Partial&lt;CreeVehicule&gt; &#x3D; {}
+
+  msgErreur?: string;
+  msgOk?: string;
+  
+  constructor(private vehiculeServ: VehiculeService, private router: Router) { 
+  }
+
+  ngOnInit(): void {
+
+    this.vehiculeServ.listerCategorie()
+    .subscribe(data &#x3D;&gt; this.categorie &#x3D; data);  
+  }
+
+  annuler(colForm: NgForm){
+    colForm.reset();
+  }
+
+  valider(colForm: NgForm) {
+    this.msgOk &#x3D; undefined;
+    this.msgErreur &#x3D; undefined;
+
+    this.vehiculeServ.creerVehicule(this.nouveauVehicule)
+    .subscribe({
+      next: () &#x3D;&gt; {
+        this.msgOk &#x3D; &quot;La voiture à bien été crée&quot;;
+        colForm.reset();
+        this.nouveauVehicule &#x3D; {}
+        this.router.navigateByUrl(&#x27;/vehicules&#x27;);
+      },
+      error: () &#x3D;&gt; this.msgErreur &#x3D; &quot;Un problème est survenu&quot;
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class &#x3D;&quot;d-flex justify-content-end p-3&quot;&gt;
+    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-bs-toggle&#x3D;&quot;modal&quot; data-bs-target&#x3D;&quot;#exampleModal&quot;&gt;Ajouter nouveau vehicules&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Formulaire ajout nouvelle voiture en pop up --&gt;
+&lt;div class&#x3D;&quot;modal fade&quot; id&#x3D;&quot;exampleModal&quot; tabindex&#x3D;&quot;-1&quot; role&#x3D;&quot;dialog&quot; data-bs-backdrop&#x3D;&quot;static&quot; data-bs-keyboard&#x3D;&quot;false&quot; aria-hidden&#x3D;&quot;true&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-dialog&quot; role&#x3D;&quot;document&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+            &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+                &lt;h1 class&#x3D;&quot;modal-title&quot;&gt;Créer nouveau véhicule&lt;/h1&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; data-bs-dismiss&#x3D;&quot;modal&quot; aria-label&#x3D;&quot;Close&quot;&gt;
+                    &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                  &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                &lt;form #colForm&#x3D;&quot;ngForm&quot;&gt;
+
+                    &lt;!-- Input immatriculation --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;input name&#x3D;&quot;immaVehicule&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.immatriculation&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;floatingImma&quot; required&gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;immaVehicule&#x27;].dirty &amp;&amp; colForm.controls[&#x27;immaVehicule&#x27;].invalid&quot;&gt;
+                            L&#x27;immatriculation du véhicule est requis.
+                        &lt;/p&gt;
+                        &lt;label for&#x3D;&quot;floatingImma&quot;&gt;Immatriculation&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Input marque --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;input name&#x3D;&quot;marqueVehicule&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.marque&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;floatingMarque&quot; required&gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;marqueVehicule&#x27;].dirty &amp;&amp; colForm.controls[&#x27;marqueVehicule&#x27;].invalid&quot;&gt;
+                            La marque du véhicule est requis.
+                        &lt;/p&gt;
+                        &lt;label for&#x3D;&quot;floatingMarque&quot;&gt;Marque&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Input modele --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;input name&#x3D;&quot;modeleVehicule&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.modele&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;floatingModele&quot; required&gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;modeleVehicule&#x27;].dirty &amp;&amp; colForm.controls[&#x27;modeleVehicule&#x27;].invalid&quot;&gt;
+                            Le modèle du véhicule est requis.
+                        &lt;/p&gt;
+                        &lt;label for&#x3D;&quot;floatingModele&quot;&gt;Modèle&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Input select categorie --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;select name&#x3D;&quot;categorieVehicule&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.idCategorie&quot; class&#x3D;&quot;form-select&quot; id&#x3D;&quot;floatingCat&quot; aria-label&#x3D;&quot;FloatingCatselect&quot;&gt;
+                            &lt;option selected&gt;Choisir la catégorie&lt;/option&gt;
+                            &lt;option *ngFor&#x3D;&quot;let tableauDeCategorie of categorie&quot; [ngValue]&#x3D;&quot;tableauDeCategorie.idCategorie&quot;&gt;{{tableauDeCategorie.libelleCategorie}}&lt;/option&gt;
+                        &lt;/select&gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;categorieVehicule&#x27;].dirty &amp;&amp; colForm.controls[&#x27;categorieVehicule&#x27;].invalid&quot;&gt;
+                            La catégorie du véhicule est requis.
+                        &lt;/p&gt;
+                            &lt;label for&#x3D;&quot;floatingCat&quot;&gt;Catégorie&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Input Nombre de places --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;input name&#x3D;&quot;nbPlace&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.nbPlace&quot; type&#x3D;&quot;number&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;floatingPlaces&quot; required &gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;nbPlace&#x27;].dirty &amp;&amp; colForm.controls[&#x27;nbPlace&#x27;].invalid&quot;&gt;
+                            Le nombre de places du véhicule est requis.
+                        &lt;/p&gt;
+                        &lt;label for&#x3D;&quot;floatingPlaces&quot;&gt;Nombre de Places&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;  
+
+                    &lt;!-- Input URL Photo --&gt;
+                    &lt;div class&#x3D;&quot;form-floating&quot;&gt;
+                        &lt;input name&#x3D;&quot;photoVehicule&quot; [(ngModel)]&#x3D;&quot;nouveauVehicule.photo&quot;  type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;floatingPhoto&quot; required&gt;
+                        &lt;p *ngIf&#x3D;&quot;colForm.controls[&#x27;photoVehicule&#x27;].dirty &amp;&amp; colForm.controls[&#x27;photoVehicule&#x27;].invalid&quot;&gt;
+                            L&#x27;url de la photo du véhicule est requis.
+                        &lt;/p&gt;
+                        &lt;label for&#x3D;&quot;floatingPhoto&quot;&gt;URL Photo&lt;/label&gt;&lt;br&gt;
+                    &lt;/div&gt;
+                
+                &lt;/form&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger&quot; data-bs-dismiss&#x3D;&quot;modal&quot; (click)&#x3D;&quot;annuler(colForm)&quot;&gt;Annuler&lt;/button&gt;
+                &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-success&quot; (click)&#x3D;&quot;valider(colForm)&quot; [disabled]&#x3D;&quot;colForm.invalid&quot;&gt;Valider&lt;/button&gt;
+                &lt;p *ngIf&#x3D;&quot;msgOk&quot;&gt;{{msgOk}}&lt;/p&gt;
+                &lt;p *ngIf&#x3D;&quot;msgErreur&quot;&gt;{{msgErreur}}&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./nouveau-vehicule.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class ="d-flex justify-content-end p-3">    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter nouveau vehicules</button></div><!-- Formulaire ajout nouvelle voiture en pop up --><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">    <div class="modal-dialog" role="document">        <div class="modal-content">            <div class="modal-header">                <h1 class="modal-title">Créer nouveau véhicule</h1>                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">                    <span aria-hidden="true">&times;</span>                  </button>            </div>            <div class="modal-body">                <form #colForm="ngForm">                    <!-- Input immatriculation -->                    <div class="form-floating">                        <input name="immaVehicule" [(ngModel)]="nouveauVehicule.immatriculation" type="text" class="form-control" id="floatingImma" required>                        <p *ngIf="colForm.controls[\'immaVehicule\'].dirty && colForm.controls[\'immaVehicule\'].invalid">                            L\'immatriculation du véhicule est requis.                        </p>                        <label for="floatingImma">Immatriculation</label><br>                    </div>                    <!-- Input marque -->                    <div class="form-floating">                        <input name="marqueVehicule" [(ngModel)]="nouveauVehicule.marque" type="text" class="form-control" id="floatingMarque" required>                        <p *ngIf="colForm.controls[\'marqueVehicule\'].dirty && colForm.controls[\'marqueVehicule\'].invalid">                            La marque du véhicule est requis.                        </p>                        <label for="floatingMarque">Marque</label><br>                    </div>                    <!-- Input modele -->                    <div class="form-floating">                        <input name="modeleVehicule" [(ngModel)]="nouveauVehicule.modele" type="text" class="form-control" id="floatingModele" required>                        <p *ngIf="colForm.controls[\'modeleVehicule\'].dirty && colForm.controls[\'modeleVehicule\'].invalid">                            Le modèle du véhicule est requis.                        </p>                        <label for="floatingModele">Modèle</label><br>                    </div>                    <!-- Input select categorie -->                    <div class="form-floating">                        <select name="categorieVehicule" [(ngModel)]="nouveauVehicule.idCategorie" class="form-select" id="floatingCat" aria-label="FloatingCatselect">                            <option selected>Choisir la catégorie</option>                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.idCategorie">{{tableauDeCategorie.libelleCategorie}}</option>                        </select>                        <p *ngIf="colForm.controls[\'categorieVehicule\'].dirty && colForm.controls[\'categorieVehicule\'].invalid">                            La catégorie du véhicule est requis.                        </p>                            <label for="floatingCat">Catégorie</label><br>                    </div>                    <!-- Input Nombre de places -->                    <div class="form-floating">                        <input name="nbPlace" [(ngModel)]="nouveauVehicule.nbPlace" type="number" class="form-control" id="floatingPlaces" required >                        <p *ngIf="colForm.controls[\'nbPlace\'].dirty && colForm.controls[\'nbPlace\'].invalid">                            Le nombre de places du véhicule est requis.                        </p>                        <label for="floatingPlaces">Nombre de Places</label><br>                    </div>                      <!-- Input URL Photo -->                    <div class="form-floating">                        <input name="photoVehicule" [(ngModel)]="nouveauVehicule.photo"  type="text" class="form-control" id="floatingPhoto" required>                        <p *ngIf="colForm.controls[\'photoVehicule\'].dirty && colForm.controls[\'photoVehicule\'].invalid">                            L\'url de la photo du véhicule est requis.                        </p>                        <label for="floatingPhoto">URL Photo</label><br>                    </div>                                </form>            </div>            <div class="modal-footer">                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="annuler(colForm)">Annuler</button>                <button type="button" class="btn btn-success" (click)="valider(colForm)" [disabled]="colForm.invalid">Valider</button>                <p *ngIf="msgOk">{{msgOk}}</p>                <p *ngIf="msgErreur">{{msgErreur}}</p>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AnnoncesComponent', 'selector': 'app-annonces'},{'name': 'AnnoncesEncoursComponent', 'selector': 'app-annonces-encours'},{'name': 'AnnoncesHistoriqueComponent', 'selector': 'app-annonces-historique'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CategorieVehiculeComponent', 'selector': 'app-categorie-vehicule'},{'name': 'ContenuPageComponent', 'selector': 'app-contenu-page-component'},{'name': 'CorpsPageComponent', 'selector': 'app-corps-page-component'},{'name': 'DetailVehiculeComponent', 'selector': 'app-detail-vehicule'},{'name': 'EnteteAdminComponent', 'selector': 'app-entete-admin'},{'name': 'EnteteCorpsComponent', 'selector': 'app-entete-corps-component'},{'name': 'FiltreVehiculeComponent', 'selector': 'app-filtre-vehicule'},{'name': 'ListeVehiculeComponent', 'selector': 'app-liste-vehicule'},{'name': 'NavigationGeneraleComponent', 'selector': 'app-navigation-generale-component'},{'name': 'NouveauVehiculeComponent', 'selector': 'app-nouveau-vehicule'},{'name': 'NouvelleAnnonceComponent', 'selector': 'app-nouvelle-annonce'},{'name': 'ResaCovoiturageEncoursComponent', 'selector': 'app-resa-covoiturage-encours'},{'name': 'ResaCovoiturageHistoriqueComponent', 'selector': 'app-resa-covoiturage-historique'},{'name': 'ResaVehiculeEncoursComponent', 'selector': 'app-resa-vehicule-encours'},{'name': 'ResaVehiculeHistoriqueComponent', 'selector': 'app-resa-vehicule-historique'},{'name': 'ReservationsCovoiturageComponent', 'selector': 'app-reservations-covoiturage'},{'name': 'ReservationsVehiculeComponent', 'selector': 'app-reservations-vehicule'},{'name': 'ReserverCovoiturageComponent', 'selector': 'app-reserver-covoiturage'},{'name': 'ReserverVehiculeComponent', 'selector': 'app-reserver-vehicule'},{'name': 'SousMenuPageComponent', 'selector': 'app-sous-menu-page-component'},{'name': 'TitrePageComponent', 'selector': 'app-titre-page-component'},{'name': 'VehiculeComponent', 'selector': 'app-vehicule-component'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NouveauVehiculeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NouveauVehiculeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

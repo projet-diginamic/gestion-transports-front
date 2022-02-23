@@ -59,6 +59,13 @@ export class VehiculeService {
 
     //Ajouter un nouveau Vehicule
     creerVehicule(vehicule: Partial<CreeVehicule>){
+        console.log(vehicule);
         return this.http.post<Vehicule>(url,vehicule)
+    }
+
+    //Filtre la liste des vehicules en fonction de l'immatriculation
+    rechercherVehiculeParImma(immatriculation : string) : Observable<Vehicule>{
+        const urlSearchImma = `http://localhost:3000/vehicules?immatriculation=${immatriculation}`;
+        return this.http.get<Vehicule>(urlSearchImma);
     }
 }

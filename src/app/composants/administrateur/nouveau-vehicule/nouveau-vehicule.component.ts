@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Categorie, CreeVehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehiculeService';
 
@@ -18,13 +17,18 @@ export class NouveauVehiculeComponent implements OnInit {
   msgErreur?: string;
   msgOk?: string;
   
-  constructor(private vehiculeServ: VehiculeService, private router: Router) { 
+  constructor(private vehiculeServ: VehiculeService) { 
   }
 
   ngOnInit(): void {
 
     this.vehiculeServ.listerCategorie()
     .subscribe(data => this.categorie = data);  
+  }
+
+  annuler(colForm: NgForm){
+    colForm.reset();
+    this.vehiculeServ.rafraichirListeVehicules();
   }
 
   valider(colForm: NgForm) {
@@ -35,11 +39,11 @@ export class NouveauVehiculeComponent implements OnInit {
     .subscribe({
       next: () => {
         this.msgOk = "La voiture à bien été crée";
-        colForm.reset();
         this.nouveauVehicule = {}
-        this.router.navigateByUrl('/vehicules');
+        colForm.reset();
       },
       error: () => this.msgErreur = "Un problème est survenu"
     });
+    this.vehiculeServ.rafraichirListeVehicules();
   }
 }
