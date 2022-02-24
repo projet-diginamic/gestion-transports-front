@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Vehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehiculeService';
 
@@ -10,13 +9,17 @@ import { VehiculeService } from 'src/app/services/vehiculeService';
 })
 export class ListeVehiculeComponent implements OnInit {
 
-  vehicules!: Observable<Vehicule[]>;
+  vehicules: Vehicule[] = [];
 
   constructor(private vehiculeServ: VehiculeService) {
    }
 
   ngOnInit(): void {
-    this.vehicules = this.vehiculeServ.listerVehicules();
+    this.vehiculeServ.listerVehicules()
+    .subscribe(
+      data => {this.vehicules = data}
+
+    )
   }
 
 }

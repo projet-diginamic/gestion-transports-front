@@ -14,21 +14,13 @@
             </div>
             <div class="modal-body">
                 <form #colForm="ngForm">
-                    <!-- Input id pour créer un nouveau vehicule sur le Json Server -->
-                    <div class="form-floating">
-                        <input name="id" [(ngModel)]="nouveauVehicule.id" type="text" class="form-control" id="floatingId" required>
-                        <p *ngIf="colForm.controls['id'].dirty && colForm.controls['id'].invalid">
-                            L'id est obligatoire.
-                        </p>
-                        <label for="floatingId">Id vehicule</label><br>
-                    </div>
                     <!-- Input immatriculation -->
                     <div class="form-floating">
                         <input appImmatriculationValidator name="immatriculation" [(ngModel)]="nouveauVehicule.immatriculation" type="text" class="form-control" id="floatingImma" required>
                         <p *ngIf="colForm.controls['immatriculation'].dirty && colForm.controls['immatriculation'].invalid">
                             L'immatriculation du véhicule est requis.
                         </p>
-                        <label for="floatingImma">Immatriculation</label><br>
+                        <label for="floatingImma">Immatriculation (exemple: XX-123-XX)</label><br>
                     </div>
 
                     <!-- Input marque -->
@@ -51,19 +43,19 @@
 
                     <!-- Input select categorie -->
                     <div class="form-floating">
-                        <select name="idCategorie" [(ngModel)]="nouveauVehicule.idCategorie" class="form-select" id="floatingCat" aria-label="FloatingCatselect">
-                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.id">{{tableauDeCategorie.libelleCategorie}}</option>
+                        <select name="categorie" [(ngModel)]="nouveauVehicule.categorie" class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.id">{{tableauDeCategorie.nom}}</option>
                         </select>
-                        <p *ngIf="colForm.controls['idCategorie'].dirty && colForm.controls['idCategorie'].invalid">
+                        <p *ngIf="colForm.controls['categorie'].dirty && colForm.controls['categorie'].invalid">
                             La catégorie du véhicule est requis.
                         </p>
-                            <label for="floatingCat">Catégorie</label><br>
+                        <label for="floatingCat">Catégorie</label><br>
                     </div>
 
                     <!-- Input Nombre de places -->
                     <div class="form-floating">
-                        <input name="nbPlace" [(ngModel)]="nouveauVehicule.nbPlace" type="number" class="form-control" id="floatingPlaces" required >
-                        <p *ngIf="colForm.controls['nbPlace'].dirty && colForm.controls['nbPlace'].invalid">
+                        <input name="nbPlaces" [(ngModel)]="nouveauVehicule.nbPlaces" type="number" class="form-control" id="floatingPlaces" required >
+                        <p *ngIf="colForm.controls['nbPlaces'].dirty && colForm.controls['nbPlaces'].invalid">
                             Le nombre de places du véhicule est requis.
                         </p>
                         <label for="floatingPlaces">Nombre de Places</label><br>

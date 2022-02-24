@@ -3,13 +3,12 @@ import { Observable, Subject } from "rxjs";
 import { Categorie, CreeVehicule, Vehicule } from "../models/vehicule";
 import { HttpClient } from '@angular/common/http';
 
-const url = `http://localhost:3000/vehicules`;
-const urlCategorie = 'http://localhost:3000/categorie';
 @Injectable({
     providedIn: 'root'
 })
-
 export class VehiculeService {
+     url = `http://localhost:8085/vehicule-service?start=0&size=9`;
+     urlCategorie = 'http://localhost:8085/categorie';
 
     private busTabVehicules = new Subject<Vehicule[]>();
     constructor(private http: HttpClient) {
@@ -22,50 +21,49 @@ export class VehiculeService {
 
     //Liste tout les vehicules de service
     listerVehicules(): Observable<Vehicule[]> {
-        return this.http.get<Vehicule[]>(url);
+        return this.http.get<Vehicule[]>(this.url);
     }
 
     //Filtre la liste des vehicules en fonction de l'immatriculation
     filtrerVehiculeParImma(immatriculation : string) : Observable<Vehicule[]>{
-        const urlFiltreImma = `http://localhost:3000/vehicules?immatriculation=${immatriculation}`;
+        const urlFiltreImma = this.url + `/immatriculation/${immatriculation}`;
         return this.http.get<Vehicule[]>(urlFiltreImma);
     }
 
     //Filtre la liste des vehicules en fonction de la marque
     filtrerVehiculeParMarque(marque: string) : Observable<Vehicule[]>{
-        const urlFiltreMarque = `http://localhost:3000/vehicules?marque=${marque}`;
+        const urlFiltreMarque = this.url + `/marque/${marque}`;
         return this.http.get<Vehicule[]>(urlFiltreMarque);
     }
 
     //Rafraichis la liste des vehicules
     rafraichirListeVehicules(){
-        const rafraichir = this.listerVehicules()
+        this.listerVehicules()
         .subscribe(
             colsServeur => this.busTabVehicules.next(colsServeur)
         );
-        rafraichir.unsubscribe();
     }
 
     //Liste des catégorie de vehicule
     listerCategorie(){
-        return this.http.get<Categorie[]>(urlCategorie);
-    }
-
-    //Recherche la catégorie du vehicule en fonction de l'idCategorie dans l'interface Vehicule
-    rechercherCategorieVehicule(id : number) : Observable<Categorie>{
-        const urlCatVehicule = `http://localhost:3000/categorie?idCategorie=${id}`;
-        return this.http.get<Categorie>(urlCatVehicule);
+        return this.http.get<Categorie[]>(this.urlCategorie);
     }
 
     //Ajouter un nouveau Vehicule
     creerVehicule(vehicule: Partial<CreeVehicule>){
         console.log(vehicule);
-        return this.http.post<Vehicule>(url,vehicule)
+        return this.http.post<Vehicule>(this.url,vehicule)
     }
 
-    //Filtre la liste des vehicules en fonction de l'immatriculation
-    rechercherVehiculeParImma(immatriculation : string) : Observable<Vehicule>{
-        const urlSearchImma = `http://localhost:3000/vehicules?immatriculation=${immatriculation}`;
+    //Verifier en base si l'immatriculation existe
+    rechercherImmatriculation(immatriculation : string) : Observable<Vehicule>{
+        const urlSearchImma = this.url+ `/immatriculation/${immatriculation}`;
         return this.http.get<Vehicule>(urlSearchImma);
+    }
+
+    //Affiche le detail du vehicule selectionné
+    detailVehiculeService(id : number) : Observable<Vehicule>{
+        const urlDetailVehicule = this.url + `/${id}`;
+        return this.http.get<Vehicule>(urlDetailVehicule);
     }
 }

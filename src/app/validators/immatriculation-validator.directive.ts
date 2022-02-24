@@ -18,7 +18,7 @@ export class ImmatriculationValidatorDirective implements AsyncValidator {
             return of(null);
         }
 
-        return this.vehiculeServ.rechercherVehiculeParImma(control.value)
+        return this.vehiculeServ.rechercherImmatriculation(control.value)
         .pipe(
             tap(col => console.log('avant le map',col)),
             map(() => ({immatriculationTrouve : true})),
