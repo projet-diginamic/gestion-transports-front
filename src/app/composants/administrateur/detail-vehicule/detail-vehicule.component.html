@@ -1,103 +1,76 @@
-<section>
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h2 class="fw-light">Vehicule > Immatriculation</h2>
-        </div>
-    </div>
-</section>
+<button type="button" class="btn btn-secondary" (click)="show()">Details</button>
+<!-- A trouvé la solution du #modal -->
+<!-- data-bs-toggle="modal" data-bs-target="#detailModal" -->
+<!-- role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="false" -->
+<div *ngIf="bmodal&&detail" [id]="idName" tabindex="2" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">{{detail.marque}} - {{detail.modele}} / {{detail.immatriculation}}</h1>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form #colForm="ngForm">
+                    <div class="d-flex justify-content-center">
+                        <img class="w-25" src="{{detail.photo}}" alt="photo vehicule">
+                    </div><br>
 
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="col-lg-4">
-            <img src="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg" alt="voiture">
-        </div>
-        <div>
-            <div class="form-floating">
-                <input type="text" class="form-control w-25" id="floatingImma" >
-                <label for="floatingImma" value="Immatriculation">Immatriculation</label><br>
-            </div>
+                    <div class="form-floating">
+                        <input appImmatriculationValidator name="immatriculation" [(ngModel)]="detail.immatriculation" type="text" class="form-control" id="floatingImma" required pattern="^[A-Z]{2}[-][0-9]{3}[-][A-Z]{2}$">
+                        <label for="floatingImma">Immatriculation (exemple: XX-123-XX)</label><br>
+                    </div>
 
-            <div class="form-floating">
-                <input type="text" class="form-control w-25" id="floatingMarque" >
-                <label for="floatingMarque" value="Marque">Marque</label><br>
-            </div>
+                    
+                    <div class="form-floating">
+                        <input name="marque" [(ngModel)]="detail.marque" type="text" class="form-control" id="floatingMarque" required>
+                        <label for="floatingMarque">Marque</label><br>
+                    </div>
 
-            <div class="form-floating">
-                <input type="text" class="form-control w-25" id="floatingModele" >
-                <label for="floatingImma" value="Modèle">Modèle</label><br>
-            </div>
+                    <div class="form-floating">
+                        <input name="modele" [(ngModel)]="detail.modele" type="text" class="form-control" id="floatingModele" required>
+                        <label for="floatingModele">Modèle</label><br>
+                    </div>
 
-            <div class="form-floating">
-                <select class="form-select w-25" id="floatingCat" aria-label="FloatingCatSelect">
-                    <option selected>Choisir la catégorie</option>
-                    <option value="suv">SUV</option>
-                    <option value="berline">Berline</option>
-                    <option value="microUrbaine">Micro Urbaine</option>
-                  </select>
-                  <label for="floatingCat">Catégorie</label><br>
-            </div>
+                    <div class="form-floating">
+                        <select name="categorie" [(ngModel)]="detail.categorie.id"  class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            
+                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.id">{{tableauDeCategorie.nom}}</option>
+                        </select>
+                        <label for="floatingCat">Catégorie</label><br>
+                    </div>
 
-            <div class="form-floating">
-                <input type="number" class="form-control w-25" id="floatingPlace" >
-                <label for="floatingPlace">Nombre de Place</label><br>
-            </div>
+                    
+                    <div class="form-floating">
+                        <input name="nbPlaces" [(ngModel)]="detail.nbPlaces" type="number" class="form-control" id="floatingPlaces" required >
+                        <label for="floatingPlaces">Nombre de Places</label><br>
+                    </div>  
 
-            <div class="form-floating">
-                <input type="text" class="form-control w-25" id="floatingPhoto" value="https://img-4.linternaute.com/27RX7SoIQPASgtEOKfyIAHHbiA4=/620x/smart/fac6d59eb91a44e886947968af8ecb2e/ccmcms-linternaute/21413766.jpg" >
-                <label for="floatingPhoto">Photo</label><br>
+                    
+                    <div class="form-floating">
+                        <input name="photo" [(ngModel)]="detail.photo"  type="text" class="form-control" id="floatingPhoto" required>
+                        <label for="floatingPhoto">URL Photo</label><br>
+                    </div>
+
+                    
+                    <div class="form-floating">
+                        <select name="statut" [(ngModel)]="detail.statut" class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            <option value="En service">En service</option>
+                            <option value="Hors service">Hors service</option>
+                            <option value="En réparation">En réparation</option>
+                        </select>
+                        <label for="floatingCat">Statut</label><br>
+                    </div>
+                
+                </form>
             </div>
-            
-            <div class="form-floating">
-                <select class="form-select w-25" id="floatingStatut" aria-label="FloatingStatutSelect">
-                    <option selected>Choisir le statut</option>
-                    <option value="enService">En service</option>
-                    <option value="enRepa">En réparation</option>
-                    <option value="horsService">Hors service</option>
-                  </select>
-                  <label for="floatingStatut">Statut</label><br>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="annuler(colForm)">Annuler</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="valider(colForm)">Valider</button>
+                <p *ngIf="msgOk">{{msgOk}}</p>
+                <p *ngIf="msgErreur">{{msgErreur}}</p>
             </div>
-        </div>
-        <!-- <div>
-            <h3>Prochaine reservations</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Date / heure de départ</th>
-                        <th scope="col">Date / heure d'arrivé</th>
-                        <th scope="col">Responsable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>17/02/2022 10:00:00</td>
-                        <td>17/02/2022 12:00:00</td>
-                        <td>Dupond</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div>
-            <h3>Historique des reservation</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Date / heure de départ</th>
-                        <th scope="col">Date / heure d'arrivé</th>
-                        <th scope="col">Responsable</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>17/02/2022 10:00:00</td>
-                        <td>17/02/2022 12:00:00</td>
-                        <td>Dupond</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-success">Modifier</button>
-            <a class="btn btn-primary" href="vehicules.html" role="btnRetour">Retour</a>
         </div>
     </div>
 </div>

@@ -1,12 +1,14 @@
 <div class="col" *ngIf="colVehicule">
     <div class="card shadow-sm">
-        <img  src="{{colVehicule.photo}}" alt="voiture">
+        <img  src="{{colVehicule.photo}}" alt="photo véhicule">
         <div class="card-body">
             <p class="card-text" hidden="false" id="{{colVehicule.id}}"></p>
             <p class="card-text text-center">{{colVehicule.immatriculation}}</p>
             <p class="card-text text-center">{{colVehicule.marque}} - {{colVehicule.modele}}</p>
             <p class="card-text" hidden="false" id="{{colVehicule.categorie}}"></p>
-            <button type="button" class="btn btn-secondary">Details</button>
+            <div>
+                <app-detail-vehicule [idVehicule]="colVehicule.id"></app-detail-vehicule>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { Categorie, CreeVehicule, Vehicule } from "../models/vehicule";
+import { Categorie, CreeVehicule, DetailVehicule, Vehicule } from "../models/vehicule";
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -51,8 +51,12 @@ export class VehiculeService {
 
     //Ajouter un nouveau Vehicule
     creerVehicule(vehicule: Partial<CreeVehicule>){
-        console.log(vehicule);
-        return this.http.post<Vehicule>(this.url,vehicule)
+        return this.http.post<Vehicule>(this.url,vehicule);
+    }
+
+    //Modifier un vehicule
+    modifierVehicule(vehicule: Partial<DetailVehicule>){
+        return this.http.put<Vehicule>(this.url,vehicule);
     }
 
     //Verifier en base si l'immatriculation existe
@@ -62,8 +66,8 @@ export class VehiculeService {
     }
 
     //Affiche le detail du vehicule selectionné
-    detailVehiculeService(id : number) : Observable<Vehicule>{
-        const urlDetailVehicule = this.url + `/${id}`;
-        return this.http.get<Vehicule>(urlDetailVehicule);
+    detailVehiculeService(id : number) : Observable<DetailVehicule>{
+        const urlDetailVehicule = `http://localhost:8085/vehicule-service/${id}`;
+        return this.http.get<DetailVehicule>(urlDetailVehicule);
     }
 }
