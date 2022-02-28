@@ -22,7 +22,10 @@ import { ResaVehiculeEncoursComponent } from './composants/utilisateur/tables/re
 import { ResaVehiculeHistoriqueComponent } from './composants/utilisateur/tables/resa-vehicule-historique/resa-vehicule-historique.component';
 import { AnnoncesEncoursComponent } from './composants/utilisateur/tables/annonces-encours/annonces-encours.component';
 import { AnnoncesHistoriqueComponent } from './composants/utilisateur/tables/annonces-historique/annonces-historique.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdresseDepartArriveeDirective } from './validators/adresse-depart-arrivee.directive';
+import { ListeCommunesFranceComponent } from './composants/utils/liste-communes-france/liste-communes-france.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,12 +46,17 @@ import { AnnoncesHistoriqueComponent } from './composants/utilisateur/tables/ann
     ResaVehiculeEncoursComponent,
     ResaVehiculeHistoriqueComponent,
     AnnoncesEncoursComponent,
-    AnnoncesHistoriqueComponent
+    AnnoncesHistoriqueComponent,
+    AdresseDepartArriveeDirective,
+    ListeCommunesFranceComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

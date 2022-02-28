@@ -4,8 +4,8 @@
         <hr>
         <div class="row mb-3">
             <div class="col-12">
-                <button class="btn btn-outline-danger me-2">Annuler</button>
-                <button class="btn btn-outline-success me-2">Valider ma réservation</button>
+                <button class="btn btn-outline-danger me-2" (click)="btnFormReset.click()">Annuler</button>
+                <button class="btn btn-outline-success me-2" (click)="btnFormSubmit.click()" [disabled]="formulaire.invalid">Valider ma réservation</button>
             </div>
         </div>
     </div>
@@ -14,64 +14,66 @@
 <div class="container">
     <div class="row">
         <div class="col-4">
-            <form>
+            <form #formulaire="ngForm" (ngSubmit)="valider(formulaire)">
 
                 <div class="form-check form-switch mb-3">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                    <label class="form-check-label" for="flexSwitchCheckDefault">Avec chauffeur</label>
+                    <input [(ngModel)]="reservation.demandeChauffeur" #demandeChauffeur="ngModel" class="form-check-input" type="checkbox" role="switch" id="demandeChauffeur" name="demandeChauffeur">
+                    <label class="form-check-label" for="demandeChauffeur">Avec chauffeur</label>
                 </div>
 
                 <div class="form-floating mb-2">
-                    <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
-                    <label for="floatingInput">Date /heure*</label>
+                    <input [(ngModel)]="reservation.dateDepart" #dateDepart="ngModel" type="date" class="form-control" id="dateDepart" name="dateDepart" min="{{maintenant}}"  required autofocus>
+                    <label for="dateDepart">Date de début *</label>
                 </div>
 
                 <div class="form-floating mb-2">
-                    <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
-                    <label for="floatingInput">Date /heure*</label>
+                    <input [(ngModel)]="reservation.heureDepart" #heureDepart="ngModel" type="time" class="form-control" id="heureDepart" name="heureDepart" min="07:00" max="21:00" required>
+                    <label for="heureDepart">Heure de début*</label>
                 </div>
 
+                <div class="form-floating mb-2">
+                    <input [(ngModel)]="reservation.dateRetour" #dateRetour="ngModel" type="date" class="form-control" id="dateRetour" name="dateRetour" min="{{maintenant}}" required>
+                    <label for="dateRetour">Date de retour*</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input [(ngModel)]="reservation.heureRetour" #heureRetour="ngModel" type="time" class="form-control" id="heureRetour" name="heureRetour" min="07:00" max="21:00" required>
+                    <label for="heureRetour">Heure de retour*</label>
+                </div>
+
+
+                <input [(ngModel)]="reservation.vehicule" #vehicule="ngModel" type="text" id="vehicule" name="vehicule" class="form-control invisible" [value]="vehiculeSelectionne" required>
+                
+                <button #btnFormSubmit type="submit" class="btn btn-success invisible">Valider</button>
+                <button #btnFormReset type="reset" class="btn btn-success invisible">Annuler</button>
 
             </form>
         </div>
         <div class="col-8 ps-5 pe-5">
-            <div class="card">
-                <div class="card-header">
-                    <div class="dropdown d-inline">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                          Filtre
-                        </a>
 
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li class="ps-2 pe-2 mb-2">
-                                <select class="form-select">
-                                    <option>Marque</option>
-                                </select>
-                            </li>
-                            <li class="ps-2 pe-2 mb-2">
-                                <select class="form-select">
-                                    <option>Catégorie</option>
-                                </select>
-                            </li>
-                            <li class="ps-2 pe-2 mb-2">
-                                <select class="form-select">
-                                    <option>Modèle</option>
-                                </select>
-                            </li>
-                        </ul>
+            <ng-container *ngIf="vehicules as vehicules;">
+                <div id="CarouselSlider" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" >
+                        <div *ngFor="let vehicule of vehicules;index as i" class="carousel-item {{(i==0)?'active':''}}" >
+                            <img [src]="vehicule.photo" class="d-block w-100" alt="Carousel One">
+                            <div class="carousel-caption text-white d-none d-md-block col-6">
+                                <h3>{{vehicule.marque}}</h3>
+                                <p>{{vehicule.modele}} {{vehicule.categorie}}</p>
+                                <button class="btn btn-warning mt-2" (click)="selectionVehicule(vehicule.id.toString())">Réserver</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="btn-group float-end" role="group">
-                        <button type="button" class="btn btn-secondary"><</button>
-                        <button type="button" class="btn btn-secondary">></button>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#CarouselSlider" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#CarouselSlider" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <img src="https://img.gocar.be/v7/_cloud_wordpress_/2018/05/rs8audi.jpg" class="card-img-top img-fluid" alt="visuel du véhicule">
-                <div class="card-body">
-                    <h5 class="text-center">12-AD-AZA</h5>
-                    <p class="card-text text-center">Audi - RS8</p>
-                    <button class="btn btn-outline-success w-100">Réserver</button>
-                </div>
-            </div>
+            </ng-container>
+
         </div>
     </div>
 </div>

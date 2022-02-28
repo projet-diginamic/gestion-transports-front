@@ -4,24 +4,30 @@
         <hr>
         <div class="row mb-3">
             <div class="col-12">
-                <button class="btn btn-outline-danger me-2">Annuler</button>
-                <button class="btn btn-outline-success me-2">Valider ma réservation</button>
+                <button class="btn btn-outline-danger me-2" (click)="btnFormReset.click()">Annuler</button>
+                <button #btnValider class="btn btn-outline-success me-2" (click)="btnFormSubmit.click()" [disabled]="formulaire.invalid">Valider ma réservation</button>
             </div>
         </div>
     </div>
 </aside>
 
-<form class="container">
+<form appAdresseDepartArrivee class="container" #formulaire="ngForm" (ngSubmit)="valider(formulaire)">
     <div class="row">
 
         <div class="col-4">
             <h4>Date et horaire</h4>
+     
+            <div class="form-floating mb-2">
+                <input [(ngModel)]="annonce.dateDepart" #date="ngModel" type="date" class="form-control" id="date" name="date" placeholder="Saisir ici la date..." min="{{maintenant}}" required autofocus>
+                <label for="date">Date*</label>
+            </div>
+            <p *ngIf="date.dirty && date.getError('required')" class="text-danger">La date est obligatoire.</p>
 
             <div class="form-floating mb-2">
-                <input type="datetime" class="form-control" id="floatingInput" placeholder="name@example.com" required autofocus>
-                <label for="floatingInput">Date /heure*</label>
+                <input [(ngModel)]="annonce.heureDepart" #heure="ngModel" type="time" class="form-control" id="heure" name="heure" placeholder="Saisir ici l'heure" min="07:00" max="21:00" required>
+                <label for="heure">Heure*</label>
             </div>
-
+            <p *ngIf="heure.dirty && heure.getError('required')" class="text-danger">L'heure est obligatoire.</p>
         </div>
 
         <div class="col-4">
@@ -29,17 +35,19 @@
             <h4>Itinéraire</h4>
 
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Adresse de départ*</label>
+                <input [(ngModel)]="annonce.adresseDepart" #adresseDepart="ngModel" type="text" class="form-control" id="adresseDepart" name="adresseDepart" placeholder="Saisir ici l'adresse de départ" required>
+                <label for="adresseDepart">Adresse de départ*</label>
             </div>
+            <p *ngIf="adresseDepart.dirty && adresseDepart.getError('required')" class="text-danger">L'adresse de départ est obligatoire.</p>
 
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Adresse de destination*</label>
+                <input [(ngModel)]="annonce.adresseArrivee" #adresseArrivee="ngModel" type="text" class="form-control" id="adresseArrivee" name="adresseArrivee" placeholder="Saisir ici l'adresse d'arrivée" required>
+                <label for="adresseArrivee">Adresse de destination*</label>
             </div>
-
+            <p *ngIf="adresseArrivee.dirty && adresseArrivee.getError('required')" class="text-danger">L'adresse d'arrivée est obligatoire.</p>
+            <p *ngIf="adresseArrivee.dirty && formulaire.getError('adresseDepartArriveeIdentique')" class="text-danger">L'adresse de départ et d'arrivée doivent être différentes.</p>
             <div class="form-floating mb-2">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-warning" role="alert">
                     <p class="text-center mt-0 mb-0">Durée du trajet <strong>2 h 31 mm</strong></p>
                     <p class="text-center mt-0 mb-0">Distance <strong>250 km</strong></p>
                 </div>
@@ -51,25 +59,32 @@
             <h4>Véhicule</h4>
 
             <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Immatriculation*</label>
+                <input [(ngModel)]="annonce.immatriculation" #immatriculation="ngModel" type="text" class="form-control" id="immatriculation" name="immatriculation" placeholder="Saisir ici l'immatriculation" required>
+                <label for="immatriculation">Immatriculation*</label>
             </div>
-
-            <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Marque*</label>
-            </div>
-
-            <div class="form-floating mb-2">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Modèle*</label>
-            </div>
+            <p *ngIf="immatriculation.dirty && immatriculation.getError('required')" class="text-danger">L'immatriculation est obligatoire.</p>
 
 
             <div class="form-floating mb-2">
-                <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                <label for="floatingInput">Nombre de places disponibles*</label>
+                <input [(ngModel)]="annonce.marque" #marque="ngModel" type="text" class="form-control" id="marque" name="marque" placeholder="Saisir ici la marque du véhicule" required>
+                <label for="marque">Marque*</label>
             </div>
+            <p *ngIf="marque.dirty && marque.getError('required')" class="text-danger">La marque est obligatoire.</p>
+
+            <div class="form-floating mb-2">
+                <input [(ngModel)]="annonce.modele" #modele="ngModel" type="text" class="form-control" id="modele" name="modele" placeholder="Saisir ici le Modèle du véhicule..." required>
+                <label for="modele">Modèle*</label>
+            </div>
+            <p *ngIf="modele.dirty && modele.getError('required')" class="text-danger">La modèle est obligatoire.</p>
+
+            <div class="form-floating mb-2">
+                <input [(ngModel)]="annonce.nbPlaces" #nbPlaces="ngModel" type="number" class="form-control" id="nbPlaces" name="nbPlaces" min="1" max="8" placeholder="Saisir ici le nombre de places..." required>
+                <label for="nbPlaces">Nombre de places disponibles*</label>
+            </div>
+            <p *ngIf="nbPlaces.dirty && nbPlaces.getError('required')" class="text-danger">Le nombre de places est obligatoire.</p>
+
         </div>
     </div>
+    <button #btnFormSubmit type="submit" class="btn btn-success invisible">Valider</button>
+    <button #btnFormReset type="reset" class="btn btn-success invisible">Annuler</button>
 </form>

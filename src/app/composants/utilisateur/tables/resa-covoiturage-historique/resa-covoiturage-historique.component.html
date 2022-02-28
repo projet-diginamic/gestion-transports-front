@@ -1,24 +1,96 @@
-<div class="container">
-    <table datatable [dtOptions]="dtOptions" class="row-border table table-light hover w-100">
-        <thead>
-            <tr>
-                <th>Date / heure</th>
-                <th>Départ</th>
-                <th>Destination</th>
-                <th>Statut</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>22/06/2017 12h30</td>
-                <td>Gare de Nantes</td>
-                <td>Gare de Saint-Nazaire</td>
-                <td>Terminé</td>
-                <td class="d-flex justify-content-end">
-                    <button class="btn btn-primary ms-2">Détails</button>
-                </td>
-            </tr>
-        </tbody>
-      </table>
-</div>
+<ng-container *ngIf="resaCovoiturage | async as reservations; else noData">
+
+    <div *ngIf="reservations.length === 0; else data">
+        <div class="container">
+            <div class="alert alert-danger text-center" role="alert">
+                Aucunes réservations de covoiturage energistrées...
+            </div>
+        </div>
+    </div>
+
+    <ng-template #data>
+        <div class="container">
+            <table datatable [dtOptions]="dtOptions" class="row-border table table-light table-striped hover w-100">
+                <thead class="table-info">
+                    <tr>
+                        <th>Date / heure</th>
+                        <th>Départ</th>
+                        <th>Destination</th>
+                        <th>Statut</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let resa of reservations">
+                        <td>Le {{resa.annonceCovoiturage.dateHeureDepart| date:'dd/MM/yyyy'}} à {{resa.annonceCovoiturage.dateHeureDepart | date:'HH:mm'}}</td>
+                        <td>{{resa.annonceCovoiturage.adresseDepart.adresse.ville | uppercase}}</td>
+                        <td>{{resa.annonceCovoiturage.adresseArrivee.adresse.ville | uppercase}}</td>
+                        <td>{{resa.statut}}</td>
+                        <td class="d-flex justify-content-end">
+                            <button class="btn btn-primary ms-2" (click)="detailReservation(resa.id)" data-bs-toggle="modal" data-bs-target="#modalCovoiturage">Détails</button>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </ng-template>
+
+</ng-container>
+
+<ng-template #noData>
+    <div class="container">
+        <div class="alert alert-info text-center" role="alert">
+            Chargement des données en cours...
+        </div>
+    </div>
+</ng-template>
+
+<div id="modalCovoiturage" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Détail de votre réservation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col-6">
+                <h3 class="mb-3">Date et horaire</h3>
+                <div class="form-floating mb-2">
+                    <input [(ngModel)]="detailCovoiturage.dateDepart" #date="ngModel" type="date" class="form-control" id="date" name="date" placeholder="Saisir ici la date..."  required autofocus>
+                    <label for="date">Date*</label>
+                </div>
+                <p *ngIf="date.dirty && date.getError('required')" class="text-danger">La date est obligatoire.</p>
+    
+                <div class="form-floating mb-5">
+                    <input [(ngModel)]="detailCovoiturage.heureDepart" #heure="ngModel" type="time" class="form-control" id="heure" name="heure" placeholder="Saisir ici l'heure" min="07:00" max="21:00" required>
+                    <label for="heure">Heure*</label>
+                </div>
+
+                <h3 class="mb-3">Itinéraire</h3>
+
+                <div class="form-floating mb-2">
+                    <input [(ngModel)]="detailCovoiturage.adresseDepart.adresse.ville" #adresseDepart="ngModel" type="text" class="form-control" id="adresseDepart" name="adresseDepart" placeholder="Saisir ici l'adresse de départ" required>
+                    <label for="adresseDepart">Adresse de départ*</label>
+                </div>
+                <p *ngIf="adresseDepart.dirty && adresseDepart.getError('required')" class="text-danger">L'adresse de départ est obligatoire.</p>
+
+                <div class="form-floating mb-2">
+                    <input [(ngModel)]="detailCovoiturage.adresseArrivee.adresse.ville" #adresseArrivee="ngModel" type="text" class="form-control" id="adresseArrivee" name="adresseArrivee" placeholder="Saisir ici l'adresse d'arrivée" required>
+                    <label for="adresseArrivee">Adresse de destination*</label>
+                </div>
+              </div>
+              <div class="col-6">
+                  <h3 class="mb-3">Liste de passagers <small>{{detailCovoiturage.passagers.length}} passager(s)</small></h3>
+                  <ul *ngIf="detailCovoiturage.passagers" class="list-group">
+                      <li *ngFor="let passager of detailCovoiturage.passagers" class="list-group-item"><span class="avatar"></span> <h5 class="d-inline">{{passager.nom | uppercase}} {{passager.prenom | lowercase}}</h5></li>
+                  </ul>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>

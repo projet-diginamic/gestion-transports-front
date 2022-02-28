@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DT_OPTS } from 'src/app/app.component';
+import { Observable } from 'rxjs';
+import { DT_OPTS, USER_ENCOURS_ID } from 'src/app/app.component';
+import { ReservationCovoiturageDetail, ReservationCovoiturageEncours } from 'src/app/models/reservations';
+import { ReservationCovoiturageService } from 'src/app/services/reservation-covoiturage.service';
 
 @Component({
   selector: 'app-resa-covoiturage-encours',
@@ -9,10 +12,59 @@ import { DT_OPTS } from 'src/app/app.component';
 export class ResaCovoiturageEncoursComponent implements OnInit {
 
   dtOptions :DataTables.Settings = DT_OPTS;
-  
-  constructor() { }
+  resaCovoiturage!: Observable<ReservationCovoiturageEncours[]>;
+  detailCovoiturage:ReservationCovoiturageDetail = {
+    id:0,
+    dateHeureDepart:new Date, 
+    dateHeureArrivee: new Date(),
+    adresseDepart: {id:0, adresse: { numeroRue: '', rue: '', ville: ''}},
+    adresseArrivee: {id:0, adresse: { numeroRue: '', rue: '', ville: ''}},  
+    passagers: [{nom:'', prenom:''}],
+    dateDepart: '',
+    heureDepart: ''
+  }
+
+  constructor(private resaCovoiturageSrv: ReservationCovoiturageService) { }
 
   ngOnInit(): void {
+    this.resaCovoiturage = this.resaCovoiturageSrv.fluxResaCovoitEncours();
+    this.resaCovoiturageSrv.actualiserReservationEncours(USER_ENCOURS_ID);
+  }
+
+  detailReservation(idReservation:number) : void{
+    
+
+    this.resaCovoiturageSrv.detailCovoiturage(idReservation).subscribe({
+      next: col=>{
+        console.log(col);
+        this.detailCovoiturage = col;
+        this.detailCovoiturage.dateDepart = col.dateHeureDepart.toString().split('T')[0]
+        this.detailCovoiturage.heureDepart = col.dateHeureDepart.toString().split('T')[1]
+        
+      },
+      error: (err)=>{
+        console.log(err);
+        
+        alert('Une erreur est survenue lors de la récupération du détail de la réservation...');
+      }
+    })
+
+  }
+
+  annulerReservation(idReservation:number):void{
+    
+    this.resaCovoiturageSrv.annulerReservation(idReservation).subscribe({
+      next: col=>{
+        console.log(col);
+        
+        this.resaCovoiturageSrv.actualiserReservationEncours(USER_ENCOURS_ID);
+      },
+      error: (err)=>{
+        console.log(err);
+        
+        alert('Une erreur est survenue lors de l\'annulation de l\'annonce...');
+      }
+    });
   }
 
 }

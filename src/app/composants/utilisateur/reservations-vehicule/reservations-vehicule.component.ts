@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationsVehiculeComponent implements OnInit {
 
-  titre="Vos réservations de véhicule";
-  libelleBtn = "Réserver un vehicule";
+  titre="Vos réservations de véhicule de service";
+  libelleBtn = "Réserver un vehicule de service";
   lien = "/reserverVehicule";
   classBtn = "btn-outline-success";
 

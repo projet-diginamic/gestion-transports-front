@@ -1,0 +1,26 @@
+<ng-container *ngIf="communes | async as communes; else noData">
+    <div *ngIf="communes.length === 0; else data">
+        <div class="container">
+            <div class="alert alert-danger text-center" role="alert">
+                Aucunes communes récupérées...
+            </div>
+        </div>
+    </div>
+
+    <ng-template #data>
+        <select class="form-select">
+            <option selected>Sélectionnez une commune</option>
+            <option *ngFor="let commune of communes" [value]="commune.nom">{{commune.nom}}</option>
+        </select>
+    </ng-template>
+
+</ng-container>
+
+<ng-template #noData>
+    <div class="container">
+        <div class="alert alert-info text-center" role="alert">
+            Chargement des données en cours...
+        </div>
+    </div>
+</ng-template>
+

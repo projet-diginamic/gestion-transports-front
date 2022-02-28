@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Utilisateur } from './models/utilisateur';
 
 @Component({
   selector: 'app-root',
@@ -33,3 +34,16 @@ export const DT_OPTS = {
       }
   }
 };
+
+export const USER_ENCOURS_ID = 1
+
+export const baseUrlBack = "http://localhost:8080/"
+
+export const USER_ACTIF : Utilisateur = {
+    id: 0,
+    nom:'',
+    prenom:'',
+    email:'',
+    password:'',
+    isAdmin: false
+}

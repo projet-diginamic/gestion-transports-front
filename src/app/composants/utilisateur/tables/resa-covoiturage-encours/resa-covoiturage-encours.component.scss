@@ -1,0 +1,19 @@
+.avatar{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/649/115/original/user-icon-symbol-sign-vector.jpg");
+    background-size: contain;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+}
+.modal-body{
+    background-color: aliceblue;
+}
+
+h3 small{
+    color: gray;
+    font-style: italic;
+    font-size: 60%;
+}

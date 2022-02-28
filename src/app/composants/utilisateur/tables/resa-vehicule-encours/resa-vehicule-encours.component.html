@@ -1,22 +1,49 @@
-<div class="container">
-    <table datatable [dtOptions]="dtOptions" class="row-border table table-light hover w-100">
-        <thead>
-            <tr>
-                <th>Date / heure début</th>
-                <th>Date / heure fin</th>
-                <th>Immatriculation</th>
-                <th>Marque</th>
-                <th>Modèle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>22/06/2017 12h30</td>
-                <td>22/06/2017 18h30</td>
-                <td>AA-2502</td>
-                <td>Peugeot</td>
-                <td>2008</td>
-            </tr>
-        </tbody>
-      </table>
-</div>
+<ng-container *ngIf="resaVehicule | async as reservations; else noData">
+
+    <div *ngIf="reservations.length === 0; else data">
+        <div class="container">
+            <div class="alert alert-danger text-center" role="alert">
+                Aucunes réservations de véhicule de service enregistrées...
+            </div>
+        </div>
+    </div>
+
+    <ng-template #data>
+        <div class="container">
+            <table datatable [dtOptions]="dtOptions" class="row-border table table-light table-striped hover w-100">
+                <thead class="table-info">
+                    <tr>
+                        <th>Date / heure début</th>
+                        <th>Date / heure fin</th>
+                        <th>Immatriculation</th>
+                        <th>Marque</th>
+                        <th>Modèle</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let resa of reservations">
+                        <td>Le {{resa.dateHeureDepart | date:'dd/MM/yyyy'}} à {{resa.dateHeureDepart | date:'HH:mm'}}</td>
+                        <td>Le {{resa.dateHeureRetour | date:'dd/MM/yyyy'}} à {{resa.dateHeureRetour | date:'HH:mm'}}</td>
+                        <td>{{resa.vehicule.immatriculation | uppercase}}</td>
+                        <td>{{resa.vehicule.marque | uppercase}}</td>
+                        <td>{{resa.vehicule.modele | lowercase}}</td>
+                        <td class="d-flex justify-content-end">
+                            <button class="btn btn-primary ms-2" (click)="detailReservation(resa.id)" data-bs-toggle="modal" data-bs-target="#modalCovoiturage">Détails</button>
+                            <button class="btn btn-danger ms-2" (click)="annulerReservation(resa.id)">Annuler</button>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </ng-template>
+    
+</ng-container>
+
+<ng-template #noData>
+    <div class="container">
+        <div class="alert alert-info text-center" role="alert">
+            Chargement des données en cours...
+        </div>
+    </div>
+</ng-template>

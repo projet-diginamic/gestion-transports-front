@@ -1,4 +1,3 @@
-
 <aside>
     <div class="container">
         <app-titre-page-component [titrePage]="titrePage" [libelleBtn]="libelleBtn" [lien]="lien" [classBtn]="classBtn"></app-titre-page-component>
@@ -6,16 +5,16 @@
         <div class="row mb-3">
             <div class="col-8 d-flex align-items-center">
                 <div class="form-floating flex-grow-1 me-1">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Saisir ici l'adresse de départ" autofocus>
-                    <label for="floatingInput">Adresse de départ</label>
+                    <input type="text" class="form-control" id="adresseDepart" name="adresseDepart" placeholder="Saisir ici l'adresse de départ" autofocus [formControl]="rechercheAdresseDepart">
+                    <label for="adresseDepart">Adresse de départ</label>
                 </div>
                 <div class="form-floating flex-grow-1 me-1">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Saisir ici l'adresse d'arrivée">
-                    <label for="floatingInput">Adresse de destination</label>
+                    <input type="text" class="form-control" id="adresseArrivee" name="adresseArrivee" placeholder="Saisir ici l'adresse d'arrivée" [formControl]="rechercheAdresseDestination">
+                    <label for="adresseArrivee">Adresse de destination</label>
                 </div>
                 <div class="form-floating flex-grow-1">
-                    <input type="datetime" class="form-control" id="floatingInput" placeholder="Saisir ici la date de départ">
-                    <label for="floatingInput">Date de départ</label>
+                    <input type="date" class="form-control" id="dateDepart" name="dateDepart" placeholder="Saisir ici la date de départ" [formControl]="rechercheDateDepart">
+                    <label for="dateDepart">Date de départ</label>
                 </div>
             </div>
             <div class="col-4">
@@ -27,3 +26,54 @@
         </div>
     </div>
 </aside>
+
+<ng-container *ngIf="annonces | async as annonces; else noData">
+
+    <div *ngIf="annonces.length === 0; else data">
+        <div class="container">
+            <div class="alert alert-danger" role="alert">
+                Aucunes réservations trouvées...
+            </div>
+        </div>
+    </div>
+
+    <ng-template #data>
+        <div class="container">
+            <table datatable [dtOptions]="dtOptions" class="row-border table table-light table-striped hover w-100">
+                <thead class="table-info">
+                    <tr>
+                        <th>Date / heure de départ</th>
+                        <th>Départ</th>
+                        <th>Destination</th>
+                        <th>Véhicule</th>
+                        <th>Chauffeur</th>
+                        <th>Place(s) disponible(s)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let annonce of annonces">
+                        <td>{{annonce.dateHeureDepart}}</td>
+                        <td>{{annonce.adresseDepart.adresse.ville}}</td>
+                        <td>{{annonce.adresseArrivee.adresse.ville}}</td>
+                        <td>{{annonce.vehicule.marque}} {{annonce.vehicule.modele}}</td>
+                        <td>{{annonce.organisateur.nom}} {{annonce.organisateur.prenom}}</td>
+                        <td>{{annonce.nbPlaces-annonce.nbResas}}</td>
+                        <td class="d-flex justify-content-end">
+                            <button class="btn btn-primary ms-2" (click)="reserverCovoiturage(annonce.id)">Réserver</button>                        
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </ng-template>
+    
+</ng-container>
+
+<ng-template #noData>
+    <div class="container">
+        <div class="alert alert-info" role="alert">
+            Chargement des données en cours...
+        </div>
+    </div>
+</ng-template>

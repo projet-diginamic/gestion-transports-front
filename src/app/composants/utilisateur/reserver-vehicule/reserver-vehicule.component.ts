@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { USER_ENCOURS_ID } from 'src/app/app.component';
+import { CreerReservationVehicule, FormReservationVehicule, VehiculeService } from 'src/app/models/reservations';
+import { ReservationVehiculeService } from 'src/app/services/reservation-vehicule.service';
 
 @Component({
   selector: 'app-reserver-vehicule',
@@ -12,9 +18,66 @@ export class ReserverVehiculeComponent implements OnInit {
   lien = "/reservationsVehicule";
   classBtn = "btn-outline-danger";
 
-  constructor() { }
-
-  ngOnInit(): void {
+  vehiculeSelectionne = "";
+  maintenant: string = new Date(Date.now() + ( 3600 * 1000 * 24)).toISOString().split('T')[0];
+  vehicules!: VehiculeService[];
+  reservation: Partial<FormReservationVehicule> = {};
+  constructor(private resaVehiculeSrv: ReservationVehiculeService, private router: Router) { 
+    this.reservation.demandeChauffeur = false;
+    this.resaVehiculeSrv.listerVehiculesServices().subscribe(liste=>{
+      console.log(liste);
+      
+      this.vehicules = liste;      
+    })
+ 
   }
 
+  ngOnInit(): void {
+    
+  }
+
+  selectionVehicule(id:string){
+    this.vehiculeSelectionne = id;
+    this.reservation.vehicule = parseInt(id);
+
+  }
+
+
+  valider(forms:NgForm){
+
+    console.log(forms);
+    
+
+    if(forms.invalid){
+      alert("error !")
+    }else{
+      let demandeResa = this.mapperCreerReservationVehicule(forms.form.value);
+      console.log(demandeResa);
+      this.resaVehiculeSrv.reserverVehiculeService(demandeResa)
+      // let annonce: CreerAnnonceCovoiturage = this.mapperCreerAnnonceCovoiturage(forms.form.value)
+      // console.log(annonce);
+
+      this.resaVehiculeSrv.reserverVehiculeService(demandeResa).subscribe({
+        next: col=>{
+          this.router.navigate(['/reservationsVehicule'])
+        },
+        error: (err)=>{
+          console.log(err);
+          
+          alert('Une erreur est survenue lors de l\'enregistrement de la réservation de véhicule...');
+        }
+      })
+    }
+  }
+
+  mapperCreerReservationVehicule(val:any):CreerReservationVehicule{
+    return {
+      vehicule: val.vehicule,
+      chauffeur:0,
+      dateHeureDepart: new Date(val.dateDepart+"T"+val.heureDepart),
+      dateHeureRetour: new Date(val.dateRetour+"T"+val.heureRetour),
+      passager: USER_ENCOURS_ID,
+      demandeChauffeur: val.demandeChauffeur
+    }
+  }
 }
