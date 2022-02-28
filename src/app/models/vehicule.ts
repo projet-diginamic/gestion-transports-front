@@ -19,6 +19,17 @@ export interface DetailVehicule{
     statut: string;
 }
 
+export interface ModifVehicule{
+    id : number;
+    categorie : number;
+    immatriculation : string;
+    marque : string;
+    modele : string;
+    nbPlaces : number;
+    photo : string;
+    statut: string;
+}
+
 export interface CreeVehicule{
     id : number
     categorie : number;

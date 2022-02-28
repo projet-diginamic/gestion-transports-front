@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { Categorie, CreeVehicule, DetailVehicule, Vehicule } from "../models/vehicule";
+import { Categorie, CreeVehicule, DetailVehicule, ModifVehicule, Vehicule } from "../models/vehicule";
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 export class VehiculeService {
-     url = `http://localhost:8085/vehicule-service?start=0&size=9`;
+     url = `http://localhost:8085/vehicule-service?start=0&size=30`;
      urlCategorie = 'http://localhost:8085/categorie';
 
     private busTabVehicules = new Subject<Vehicule[]>();
@@ -55,8 +55,9 @@ export class VehiculeService {
     }
 
     //Modifier un vehicule
-    modifierVehicule(vehicule: Partial<DetailVehicule>){
-        return this.http.put<Vehicule>(this.url,vehicule);
+    modifierVehicule(vehicule: Partial<ModifVehicule>){
+        const urlModifVehicule = `http://localhost:8085/vehicule-service`;
+        return this.http.put<ModifVehicule>(urlModifVehicule,vehicule);
     }
 
     //Verifier en base si l'immatriculation existe

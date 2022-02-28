@@ -34,7 +34,6 @@ export class NouveauVehiculeComponent implements OnInit {
   valider(colForm: NgForm) {
     this.msgOk = undefined;
     this.msgErreur = undefined;
-
     this.vehiculeServ.creerVehicule(this.nouveauVehicule)
     .subscribe({
       next: () => {

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Categorie, DetailVehicule } from 'src/app/models/vehicule';
+import { Categorie, DetailVehicule, ModifVehicule } from 'src/app/models/vehicule';
 import { VehiculeService } from 'src/app/services/vehiculeService';
 
 @Component({
@@ -12,10 +12,11 @@ export class DetailVehiculeComponent implements OnInit {
 
   detail!: DetailVehicule;
   @Input() idVehicule = 0;
-  detailVehicule: Partial<DetailVehicule> = {}
+  detailVehicule: Partial<DetailVehicule> = {};
+  modifVehicule: Partial<ModifVehicule> = {};
   categorie!: Categorie[];
-  nameId = "#detail"
-  idName = "detail"
+  nameId = "#detail";
+  idName = "detail";
   bmodal = false;
 
   msgErreur?: string;
@@ -39,23 +40,30 @@ export class DetailVehiculeComponent implements OnInit {
 
   }
 
-  annuler(colForm: NgForm){
-    colForm.reset();
-    this.vehiculeServ.rafraichirListeVehicules();
-  }
-
   valider(colForm: NgForm) {
     this.msgOk = undefined;
     this.msgErreur = undefined;
+    this.detailVehicule = this.detail;
 
-    this.vehiculeServ.modifierVehicule(this.detailVehicule)
+    this.modifVehicule.id = this.detailVehicule.id;
+    this.modifVehicule.categorie = this.detailVehicule.categorie?.id;
+    this.modifVehicule.immatriculation = this.detailVehicule.immatriculation;
+    this.modifVehicule.marque = this.detailVehicule.marque;
+    this.modifVehicule.modele = this.detailVehicule.modele;
+    this.modifVehicule.nbPlaces = this.detailVehicule.nbPlaces;
+    this.modifVehicule.photo = this.detailVehicule.photo;
+    this.modifVehicule.statut = this.detailVehicule.statut;
+
+    this.vehiculeServ.modifierVehicule(this.modifVehicule)
+
     .subscribe({
       next: () => {
         this.msgOk = "La voiture à bien été crée";
-        this.detailVehicule = {}
         colForm.reset();
       },
-      error: () => this.msgErreur = "Un problème est survenu"
+      error: () => {
+        this.msgErreur = "Un problème est survenu";
+      }
     });
     this.vehiculeServ.rafraichirListeVehicules();
   }
