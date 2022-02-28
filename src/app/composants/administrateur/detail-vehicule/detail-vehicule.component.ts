@@ -40,7 +40,7 @@ export class DetailVehiculeComponent implements OnInit {
 
   }
 
-  valider(colForm: NgForm) {
+  valider() {
     this.msgOk = undefined;
     this.msgErreur = undefined;
     this.detailVehicule = this.detail;
@@ -59,7 +59,6 @@ export class DetailVehiculeComponent implements OnInit {
     .subscribe({
       next: () => {
         this.msgOk = "La voiture à bien été crée";
-        colForm.reset();
       },
       error: () => {
         this.msgErreur = "Un problème est survenu";
