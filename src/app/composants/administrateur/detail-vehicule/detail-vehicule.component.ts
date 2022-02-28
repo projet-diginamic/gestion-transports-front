@@ -58,7 +58,7 @@ export class DetailVehiculeComponent implements OnInit {
 
     .subscribe({
       next: () => {
-        this.msgOk = "La voiture à bien été crée";
+        this.msgOk = "Le vehicule à bien été modifié";
       },
       error: () => {
         this.msgErreur = "Un problème est survenu";
