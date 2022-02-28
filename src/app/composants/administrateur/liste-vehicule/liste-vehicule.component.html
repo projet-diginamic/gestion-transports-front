@@ -1,0 +1,14 @@
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <ng-container *ngIf="vehicules as tabVehicules; else colAbsent">
+                <p *ngIf="tabVehicules.length === 0">Aucune donnée trouvé</p>
+                <app-vehicule-component *ngFor="let tableauDeVehicules of tabVehicules" [colVehicule]="tableauDeVehicules"></app-vehicule-component>
+            </ng-container>
+        </div>
+
+        <ng-template #colAbsent>
+            <p>Chargement....</p>
+        </ng-template>
+    </div>
+</div>

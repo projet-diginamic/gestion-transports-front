@@ -1,0 +1,75 @@
+<button type="button" class="btn btn-secondary" (click)="show()">Details</button>
+<!-- A trouvé la solution du #modal -->
+<!-- data-bs-toggle="modal" data-bs-target="#detailModal" -->
+<!-- role="dialog" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="false" -->
+<div *ngIf="bmodal&&detail" [id]="idName" tabindex="2" >
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">{{detail.marque}} - {{detail.modele}} / {{detail.immatriculation}}</h1>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form #colForm="ngForm">
+                    <div class="d-flex justify-content-center">
+                        <img class="w-25" src="{{detail.photo}}" alt="photo vehicule">
+                    </div><br>
+
+                    <div class="form-floating">
+                        <input appImmatriculationValidator name="immatriculation" [(ngModel)]="detail.immatriculation" type="text" class="form-control" id="floatingImma" required pattern="^[A-Z]{2}[-][0-9]{3}[-][A-Z]{2}$">
+                        <label for="floatingImma">Immatriculation (exemple: XX-123-XX)</label><br>
+                    </div>
+
+                    
+                    <div class="form-floating">
+                        <input name="marque" [(ngModel)]="detail.marque" type="text" class="form-control" id="floatingMarque" required>
+                        <label for="floatingMarque">Marque</label><br>
+                    </div>
+
+                    <div class="form-floating">
+                        <input name="modele" [(ngModel)]="detail.modele" type="text" class="form-control" id="floatingModele" required>
+                        <label for="floatingModele">Modèle</label><br>
+                    </div>
+
+                    <div class="form-floating">
+                        <select name="categorie" [(ngModel)]="detail.categorie.id"  class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            
+                            <option *ngFor="let tableauDeCategorie of categorie" [ngValue]="tableauDeCategorie.id">{{tableauDeCategorie.nom}}</option>
+                        </select>
+                        <label for="floatingCat">Catégorie</label><br>
+                    </div>
+
+                    
+                    <div class="form-floating">
+                        <input name="nbPlaces" [(ngModel)]="detail.nbPlaces" type="number" class="form-control" id="floatingPlaces" required >
+                        <label for="floatingPlaces">Nombre de Places</label><br>
+                    </div>  
+
+                    
+                    <div class="form-floating">
+                        <input name="photo" [(ngModel)]="detail.photo"  type="text" class="form-control" id="floatingPhoto" required>
+                        <label for="floatingPhoto">URL Photo</label><br>
+                    </div>
+
+                    
+                    <div class="form-floating">
+                        <select name="statut" [(ngModel)]="detail.statut" class="form-select" id="floatingCat" aria-label="FloatingCatselect">
+                            <option value="En service">En service</option>
+                            <option value="Hors service">Hors service</option>
+                            <option value="En réparation">En réparation</option>
+                        </select>
+                        <label for="floatingCat">Statut</label><br>
+                    </div>
+                
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="valider()">Valider</button>
+                <p *ngIf="msgOk">{{msgOk}}</p>
+                <p *ngIf="msgErreur">{{msgErreur}}</p>
+            </div>
+        </div>
+    </div>
+</div>
