@@ -13,23 +13,37 @@ import { ReservationVehiculeService } from 'src/app/services/reservation-vehicul
 })
 export class ReserverVehiculeComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant réservations véhicules 
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la réservation d'un covoiturage
+   *      - Gestion de la liste des annonces de covoiturage actif
+   * 
+   *      Attribut :
+   *        - titre, libelleBtn, lien, classBtn => paramètres du composant titre page
+   *        - lienEncours, lienHistorique, libelleEncours => paramètres du composant sous menu
+   *        
+   */
+
   titrePage="Réserver un véhicule";
   libelleBtn = "Retour à la liste";
   lien = "/reservationsVehicule";
   classBtn = "btn-outline-danger";
 
   vehiculeSelectionne = "";
-  maintenant: string = new Date(Date.now() + ( 3600 * 1000 * 24)).toISOString().split('T')[0];
+  dateMin: string = new Date(Date.now() + ( 3600 * 1000 * 24)).toISOString().split('T')[0];
+  dateMinMsg : string = new Date(Date.now() + ( 3600 * 1000 * 24)).toLocaleDateString()
   vehicules!: VehiculeService[];
   reservation: Partial<FormReservationVehicule> = {};
   constructor(private resaVehiculeSrv: ReservationVehiculeService, private router: Router) { 
     this.reservation.demandeChauffeur = false;
     this.resaVehiculeSrv.listerVehiculesServices().subscribe(liste=>{
-      console.log(liste);
-      
       this.vehicules = liste;      
     })
- 
   }
 
   ngOnInit(): void {
@@ -39,31 +53,23 @@ export class ReserverVehiculeComponent implements OnInit {
   selectionVehicule(id:string){
     this.vehiculeSelectionne = id;
     this.reservation.vehicule = parseInt(id);
-
   }
 
 
   valider(forms:NgForm){
-
-    console.log(forms);
-    
 
     if(forms.invalid){
       alert("error !")
     }else{
       let demandeResa = this.mapperCreerReservationVehicule(forms.form.value);
       console.log(demandeResa);
-      this.resaVehiculeSrv.reserverVehiculeService(demandeResa)
-      // let annonce: CreerAnnonceCovoiturage = this.mapperCreerAnnonceCovoiturage(forms.form.value)
-      // console.log(annonce);
-
+      
       this.resaVehiculeSrv.reserverVehiculeService(demandeResa).subscribe({
         next: col=>{
           this.router.navigate(['/reservationsVehicule'])
         },
         error: (err)=>{
           console.log(err);
-          
           alert('Une erreur est survenue lors de l\'enregistrement de la réservation de véhicule...');
         }
       })

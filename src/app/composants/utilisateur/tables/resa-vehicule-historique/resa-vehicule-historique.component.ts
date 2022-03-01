@@ -11,16 +11,34 @@ import { ReservationVehiculeService } from 'src/app/services/reservation-vehicul
 })
 export class ResaVehiculeHistoriqueComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant resa vehicule historique
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la liste des réservations de véhicules historiques
+   *  
+   * 
+   *      Attribut :
+   *        - dtOptions => paramètres de la datatable
+   *        - resaVehicule => liste des réservations
+   *        
+   */
+
   dtOptions :DataTables.Settings = DT_OPTS;
   resaVehicule!: Observable<ReservationVehicule[]>;
   
   constructor(private resaVehiculeSrv: ReservationVehiculeService) { }
-
+  
+  //Initialisation de la liste des réservations
   ngOnInit(): void {
     this.resaVehicule = this.resaVehiculeSrv.fluxResaHistorique();
     this.resaVehiculeSrv.actualiserHistorique(USER_ENCOURS_ID);
   }
-
+  
+  //Affichage du détail de la réservation
   detailReservation(idReservation:number):void{
 
   }

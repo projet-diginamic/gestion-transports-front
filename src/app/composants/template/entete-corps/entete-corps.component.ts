@@ -7,6 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EnteteCorpsComponent implements OnInit {
 
+  /**
+   *  TEMPLATE  - Corps de la page 
+   *  ----------------------------
+   *  affichage du composant entete-corps et du coposant contenu-page
+   */
+
   @Input() titrePage="";
   @Input() libelleBtn = "";
   @Input() lien = "";

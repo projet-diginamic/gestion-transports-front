@@ -11,23 +11,24 @@
     </div>
 </aside>
 
-<form appAdresseDepartArrivee class="container" #formulaire="ngForm" (ngSubmit)="valider(formulaire)">
+<form appAdresseDepartArrivee appDateMinReservation appHeureReservation class="container" #formulaire="ngForm" (ngSubmit)="valider(formulaire)">
     <div class="row">
 
         <div class="col-4">
             <h4>Date et horaire</h4>
      
             <div class="form-floating mb-2">
-                <input [(ngModel)]="annonce.dateDepart" #date="ngModel" type="date" class="form-control" id="date" name="date" placeholder="Saisir ici la date..." min="{{maintenant}}" required autofocus>
+                <input [(ngModel)]="annonce.dateDepart" #date="ngModel" type="date" class="form-control" id="date" name="date" placeholder="Saisir ici la date..." min="{{dateMin}}" required autofocus>
                 <label for="date">Date*</label>
             </div>
             <p *ngIf="date.dirty && date.getError('required')" class="text-danger">La date est obligatoire.</p>
-
+            <p *ngIf="date.dirty && formulaire.getError('dateMinInvalide')" class="text-danger">La date doit être supérieure ou égale au {{dateMinMsg}}.</p>
             <div class="form-floating mb-2">
                 <input [(ngModel)]="annonce.heureDepart" #heure="ngModel" type="time" class="form-control" id="heure" name="heure" placeholder="Saisir ici l'heure" min="07:00" max="21:00" required>
                 <label for="heure">Heure*</label>
             </div>
             <p *ngIf="heure.dirty && heure.getError('required')" class="text-danger">L'heure est obligatoire.</p>
+            <p *ngIf="heure.dirty && formulaire.getError('heureInvalide')" class="text-danger">L'heure doit être comprise entre 7h00 et 21h00.</p>
         </div>
 
         <div class="col-4">
@@ -46,7 +47,7 @@
             </div>
             <p *ngIf="adresseArrivee.dirty && adresseArrivee.getError('required')" class="text-danger">L'adresse d'arrivée est obligatoire.</p>
             <p *ngIf="adresseArrivee.dirty && formulaire.getError('adresseDepartArriveeIdentique')" class="text-danger">L'adresse de départ et d'arrivée doivent être différentes.</p>
-            <div class="form-floating mb-2">
+            <div class="form-floating mb-2 d-none">
                 <div class="alert alert-warning" role="alert">
                     <p class="text-center mt-0 mb-0">Durée du trajet <strong>2 h 31 mm</strong></p>
                     <p class="text-center mt-0 mb-0">Distance <strong>250 km</strong></p>

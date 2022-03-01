@@ -13,6 +13,22 @@ import { ReservationCovoiturageService } from 'src/app/services/reservation-covo
 })
 export class ReserverCovoiturageComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant réservations véhicules 
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la réservation d'un covoiturage
+   *      - Gestion de la liste des annonces de covoiturage actif
+   * 
+   *      Attribut :
+   *        - titre, libelleBtn, lien, classBtn => paramètres du composant titre page
+   *        - lienEncours, lienHistorique, libelleEncours => paramètres du composant sous menu
+   *        - rechercheAdresseDepart, rechercheAdresseDestination, rechercheDateDepart => champs de saisie des filtres
+   */
+
   titrePage="Réserver un covoiturage";
   libelleBtn = "Retour à la liste";
   lien = "/reservationsCoviturage";
@@ -21,13 +37,6 @@ export class ReserverCovoiturageComponent implements OnInit {
   rechercheAdresseDepart: FormControl = new FormControl('');
   rechercheAdresseDestination: FormControl = new FormControl('');
   rechercheDateDepart: FormControl = new FormControl('');
-
-  paramTitre: ParamsTitrePageComposant = {
-    titrePage:"Réserver un covoiturage",
-    libelleBtn: "Retour à la liste",
-    lien: "/reservationsCoviturage",
-    classBtn: "btn-outline-danger"
-  };
   
   dtOptions :DataTables.Settings = DT_OPTS;
   annonces!: Observable<AnnonceCovoiturage[]>;
@@ -35,10 +44,10 @@ export class ReserverCovoiturageComponent implements OnInit {
 
   constructor(private resaCovoitSrv: ReservationCovoiturageService) {
     this.annonces = this.resaCovoitSrv.fluxAnnonces();
-    // this.resaCovoitSrv.actualiserAnnonces(this.filtre);
     this.resaCovoitSrv.actualiserAnnonces();
    }
-
+  
+  // Abonnement à l'évènement valueChanges des champs de saisie
   ngOnInit(): void {
     this.rechercheAdresseDepart.valueChanges.subscribe(saisie => {
       (saisie) ? saisie = {id: 0, numeroRue: "", rue: "", ville: saisie } : saisie = undefined;

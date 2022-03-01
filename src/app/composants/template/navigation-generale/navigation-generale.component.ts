@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { USER_ACTIF, USER_ENCOURS_ID } from 'src/app/app.component';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
@@ -10,6 +11,22 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 })
 export class NavigationGeneraleComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant navigation générale
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la navigation générale de l'application
+   *      - Gestion de l'utilisateur en cours
+   * 
+   *      Attribut :
+   *        - utilisateurActif:Utilisateur => Informations de l'utilisateur récupérées en base
+   * 
+   */
+
+
   utilisateurActif: Utilisateur = {
     id: USER_ENCOURS_ID,
     nom: "",
@@ -18,10 +35,10 @@ export class NavigationGeneraleComponent implements OnInit {
     isAdmin : true,
     password: ""
   };
-
-  constructor(private utilisateurSrv: UtilisateurService) {
-
-    utilisateurSrv.getUser().subscribe({
+  classActive = ""
+  constructor(private utilisateurSrv: UtilisateurService, private router: Router) {
+    //Récupération de l'utilisateur
+    utilisateurSrv.getUser(USER_ENCOURS_ID).subscribe({
       next: user=>{
         this.utilisateurActif.id = user.id
         this.utilisateurActif.nom = user.nom
@@ -35,10 +52,21 @@ export class NavigationGeneraleComponent implements OnInit {
         this.utilisateurActif.prenom = "Fertus"
       }
     })
-  
+
+    router.events.subscribe((val) => {
+      this.gereClassActive()
+    });
+   
   }
 
   ngOnInit(): void {
+    this.gereClassActive()
+  }
+
+  gereClassActive(){
+    (window.location.href.includes('reservationsCoviturage') || window.location.href.includes('reservationsVehicule')) ? this.classActive = "active" : this.classActive = ""
   }
 
 }
+
+

@@ -26,6 +26,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdresseDepartArriveeDirective } from './validators/adresse-depart-arrivee.directive';
 import { ListeCommunesFranceComponent } from './composants/utils/liste-communes-france/liste-communes-france.component';
+import { DateMinReservationDirective } from './validators/date-min-reservation.directive';
+import { HeureReservationDirective } from './validators/heure-reservation.directive';
+import { HeureReservationVehiculeDirective } from './validators/heure-reservation-vehicule.directive';
+import { DateMinReservationVehiculeDirective } from './validators/date-min-reservation-vehicule.directive';
+import { DateReservationVehiculeDirective } from './validators/date-reservation-vehicule.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,12 @@ import { ListeCommunesFranceComponent } from './composants/utils/liste-communes-
     AnnoncesEncoursComponent,
     AnnoncesHistoriqueComponent,
     AdresseDepartArriveeDirective,
-    ListeCommunesFranceComponent
+    ListeCommunesFranceComponent,
+    DateMinReservationDirective,
+    HeureReservationDirective,
+    HeureReservationVehiculeDirective,
+    DateMinReservationVehiculeDirective,
+    DateReservationVehiculeDirective
   ],
   imports: [
     BrowserModule,

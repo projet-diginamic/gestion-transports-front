@@ -11,14 +11,29 @@ import { AnnoncesService } from 'src/app/services/annonces.service';
   styleUrls: ['./nouvelle-annonce.component.scss']
 })
 export class NouvelleAnnonceComponent implements OnInit {
+
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant nouvelle anonces
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Création d'une annonce de covoiturage
+   * 
+   *      Attribut :
+   *        - titre, libelleBtn, lien, classBtn => paramètres du composant titre page
+   *        - dateMin => date minimum pour le input type date
+   *        - annonce => FormAnnonceCovoiturage associé au formulaire
+   */
   
   titrePage="Publier une annonce";
   libelleBtn = "Retour à la liste";
   lien = "/annonces";
   classBtn = "btn-outline-danger";
  
-  maintenant: string = new Date(Date.now() + ( 3600 * 1000 * 24)).toISOString().split('T')[0];
-
+  dateMin: string = new Date(Date.now() + ( 3600 * 1000 * 24)).toISOString().split('T')[0];
+  dateMinMsg : string = new Date(Date.now() + ( 3600 * 1000 * 24)).toLocaleDateString()
   annonce: Partial<FormAnnonceCovoiturage> = {};
 
   constructor(private annoncesSrv:AnnoncesService, private router: Router) { 
@@ -27,11 +42,12 @@ export class NouvelleAnnonceComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
+  //Validation du formulaire
   valider(forms:NgForm){
     if(forms.invalid){
       alert("error !")
     }else{
+      
       let annonce: CreerAnnonceCovoiturage = this.mapperCreerAnnonceCovoiturage(forms.form.value)
       this.annoncesSrv.creerAnnonce(annonce).subscribe({
         next: col=>{
@@ -44,10 +60,11 @@ export class NouvelleAnnonceComponent implements OnInit {
       })
     }
   }
-
+  //Mappage FormAnnonceCovoiturage vers CreerAnnonceCovoiturage
   mapperCreerAnnonceCovoiturage(val:any) : CreerAnnonceCovoiturage{
+    
     return {
-      dateHeureDepart: new Date(val.date+"T"+val.heure+":00"),
+      dateHeureDepart: new Date(val.date+"T"+val.heure),
       adresseDepart: {
         id:0,
         adresse: {

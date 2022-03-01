@@ -10,6 +10,21 @@ import { ApiGouvCommunesService } from 'src/app/services/api-gouv-communes.servi
 })
 export class ListeCommunesFranceComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant liste communes france
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la liste des communes de france
+   *  
+   * 
+   *      Attribut :
+   *        - communes => liste des communes
+   *        
+   */
+
   communes!:Observable<ApiGouvCommune[]>;
 
   constructor(private apiGouvCommunes:ApiGouvCommunesService) { }

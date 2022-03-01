@@ -7,14 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnnoncesComponent implements OnInit {
 
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant Anonces
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la liste des annonces en cours - historique
+   *      - Redirection vers la fiche de création d'une annonce
+   * 
+   *      Attribut :
+   *        - titre, libelleBtn, lien, classBtn => paramètres du composant titre page
+   *        - lienEncours, lienHistorique, libelleEncours => paramètres du composant sous menu
+   */
+
   titre="Vos annonces";
-  libelleBtn = "Créer une nouvelle annonces";
+  libelleBtn = "Créer une nouvelle annonce";
   lien = "/nouvelleAnnonce";
   classBtn = "btn-outline-success";
 
-  lienEncours:string = "/annonces/enCours";
-  lienHistorique:string = "/annonces/historique";
-  libelleEncours: string = "Annonces";
+  lienEncours = "/annonces/enCours";
+  lienHistorique = "/annonces/historique";
+  libelleEncours = "Annonces";
 
   constructor() { }
 

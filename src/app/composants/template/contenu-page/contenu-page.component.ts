@@ -7,7 +7,9 @@ import { DT_OPTS } from 'src/app/app.component';
   styleUrls: ['./contenu-page.component.scss']
 })
 export class ContenuPageComponent implements OnInit {
-
+  /**
+   *  TEMPLATE : Composant d'exemple qui contient une datatable
+   */
   dtOptions :DataTables.Settings = DT_OPTS;
 
   constructor() { }

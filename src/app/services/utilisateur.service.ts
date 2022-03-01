@@ -9,11 +9,17 @@ import { Utilisateur } from '../models/utilisateur';
 })
 export class UtilisateurService {
 
+  /**
+ *        Service de gestion des utilisateurs
+ *        -------------------------------
+ *        Récupération d'un tilisateur en fonction de son identifiant
+ *       
+ */
 
   constructor(private http:HttpClient) { }
 
-  getUser(): Observable<Utilisateur>{
-    return this.http.get<Utilisateur>("http://localhost:8080/collaborateur/"+USER_ENCOURS_ID);
+  getUser(id:number): Observable<Utilisateur>{
+    return this.http.get<Utilisateur>("http://localhost:8080/collaborateur/"+id);
   }
 
 

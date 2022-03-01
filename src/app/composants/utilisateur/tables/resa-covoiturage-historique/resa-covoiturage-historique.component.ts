@@ -10,7 +10,23 @@ import { ReservationCovoiturageService } from 'src/app/services/reservation-covo
   styleUrls: ['./resa-covoiturage-historique.component.scss']
 })
 export class ResaCovoiturageHistoriqueComponent implements OnInit {
-
+  /**
+   ***********************************************************************************************    
+   * 
+   *    Composant resa covoiturage historique
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la liste des réservations de covoiturage historiques
+   *  
+   * 
+   *      Attribut :
+   *        - dtOptions => paramètres de la datatable
+   *        - resaCovoiturage => liste des réservations
+   *        - detailCovoiturage => détail de l'annonce
+   *        
+   */
+  
   dtOptions :DataTables.Settings = DT_OPTS;
   
   resaCovoiturage!: Observable<ReservationCovoiturageHistorique[]>;
@@ -30,19 +46,17 @@ export class ResaCovoiturageHistoriqueComponent implements OnInit {
     this.resaCovoiturage = this.resaCovoiturageSrv.fluxResaCovoitHistorique();
     this.resaCovoiturageSrv.actualiserHistorique(USER_ENCOURS_ID);
   }
-
+  //Affichage du détail de la réservation
   detailReservation(idReservation:number) : void{
     this.resaCovoiturageSrv.detailCovoiturage(idReservation).subscribe({
       next: col=>{
         console.log(col);
         this.detailCovoiturage = col;
         this.detailCovoiturage.dateDepart = col.dateHeureDepart.toString().split('T')[0]
-        this.detailCovoiturage.heureDepart = col.dateHeureDepart.toString().split('T')[1]
-        
+        this.detailCovoiturage.heureDepart = col.dateHeureDepart.toString().split('T')[1] 
       },
       error: (err)=>{
         console.log(err);
-        
         alert('Une erreur est survenue lors de la récupération du détail de la réservation...');
       }
     })

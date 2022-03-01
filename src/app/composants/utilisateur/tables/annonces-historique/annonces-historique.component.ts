@@ -11,7 +11,23 @@ import { AnnoncesService } from 'src/app/services/annonces.service';
   styleUrls: ['./annonces-historique.component.scss']
 })
 export class AnnoncesHistoriqueComponent implements OnInit {
-  
+   /**
+   ***********************************************************************************************    
+   * 
+   *    Composant annonces en cours 
+   * 
+   *********************************************************************************************** 
+   *    Fonction du composant :
+   *      - Gestion de la liste des annonces historiques
+   *  
+   * 
+   *      Attribut :
+   *        - dtOptions => paramètres de la datatable
+   *        - annonces => liste des annonces
+   *        - detailCovoiturage => détail de l'annonce
+   *        
+   */
+
   dtOptions :DataTables.Settings = DT_OPTS;
   annonces!: Observable<AnnonceCovoiturageDetailDto[]>;
   detailCovoiturage:AnnonceCovoiturageDetailDto = {
@@ -27,13 +43,14 @@ export class AnnoncesHistoriqueComponent implements OnInit {
     dateDepart: '',
     heureDepart: ''
   }
+  
   constructor(private annoncesSrv: AnnoncesService) { }
 
   ngOnInit(): void {
     this.annonces = this.annoncesSrv.fluxResaCovoitHistorique();
     this.annoncesSrv.actualiserHistorique(USER_ENCOURS_ID);
   }
-
+  //Affichage du détail de l'annonce
   detailReservation(idReservation:number,passagers:Utilisateur[]) : void{
     this.annoncesSrv.detailAnnonceCovoiturage(idReservation).subscribe({
       next: col=>{
